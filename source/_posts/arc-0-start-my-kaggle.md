@@ -12,7 +12,7 @@ tags:
 又是个碎碎念的博客呢。
 生活的中的细节多了，我目前也能静下来了，和形而上学和解了，未来也许可以写出来不错的文章。
 ![准备做甜品的过程](arc-0-start-my-kaggle/tools-for-a-cake.jpeg)
-![最终成品](arc-0-start-my-kaggle/the-final-cake.jpg =400)
+![最终成品](arc-0-start-my-kaggle/the-final-cake.jpg)
 放张图记录一下最近的生活吧～
 
 [原文地址：开始了我的kaggle学习](https://yangfs.blogspot.com/2022/04/kaggle.html)
