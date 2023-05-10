@@ -1,7 +1,7 @@
 ---
-title: '开始了我的kaggle学习'
+title: 开始了我的kaggle学习
 date: 2022-04-15 22:26:11
-tags:
+tags: 旧博客
 ---
 
 ## 开始了我的kaggle学习
@@ -14,5 +14,7 @@ tags:
 ![准备做甜品的过程](arc-0-start-my-kaggle/tools-for-a-cake.jpeg)
 ![最终成品](arc-0-start-my-kaggle/the-final-cake.jpg)
 放张图记录一下最近的生活吧～
+
+## 相关信息
 
 [原文地址：开始了我的kaggle学习](https://yangfs.blogspot.com/2022/04/kaggle.html)
