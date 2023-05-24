@@ -3,8 +3,34 @@ title: 写给自己的博客使用笔记
 date: 2020-04-24
 ---
 
+## 博客管理
 
-## Quick Start
+准备在这里记录一下博客的管理方式方法，管理好我的博客。
+
+### 添加文章
+
+``` bash
+npx hexo new "about ts type not in runtime" # please in fushenyang Folder
+```
+
+执行以上命令可以添加文章，然后就可以撰写文章了。
+
+### 生成并发布网站
+
+``` bash
+npx hexo g -d
+```
+
+执行该命令可以直接生成并重新发布网站。（提醒一下，记得关注网络状态）。
+
+### 修改文章之后本地预览网站
+
+``` bash
+npx hexo g #生成网站
+npx hexo s #生成预览服务器
+```
+
+## 官方教程如下
 
 ### Create a new post
 
@@ -37,23 +63,3 @@ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
-
-## 博客管理
-
-准备在这里记录一下博客的管理方式方法，管理好我的博客。
-
-### 添加文章
-
-``` bash
-npx hexo new "about ts type not in runtime" # please in fushenyang Folder
-```
-
-执行以上命令可以添加文章，然后就可以撰写文章了。
-
-### 生成并发布网站
-
-``` bash
-npx hexo g -d
-```
-
-执行该命令可以直接生成并重新发布网站。（提醒一下，记得关注网络状态）。
