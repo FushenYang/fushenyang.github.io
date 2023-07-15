@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "hexo": "^6.3.0",
-    "hexo-asset-link": "^2.2.1",
+    "hexo-asset-link": "^2.2.2",
     "hexo-cli": "^4.3.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
@@ -21,10 +21,10 @@
     "hexo-generator-index": "^3.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-marked": "^6.1.1",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
-    "hexo-theme-next": "^8.16.0"
+    "hexo-theme-next": "^8.17.1"
   }
 }
