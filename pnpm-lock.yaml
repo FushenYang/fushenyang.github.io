@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   bulma-stylus:
-    specifier: 0.8.0
-    version: 0.8.0
+    specifier: 0.9.1
+    version: 0.9.1
   hexo-asset-link:
     specifier: ^2.2.2
     version: 2.2.2(hexo@6.3.0)
@@ -1492,8 +1492,8 @@ packages:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: false
 
-  /bulma-stylus@0.8.0:
-    resolution: {integrity: sha512-9Q9BMPeHFyJ5EWh/tJPCcLDYEovKzUBOyMHsKEIyxSYEKG8wqt9RVuTumaJ2AfDjyHC9OifWKOfJSweKYD5IMQ==}
+  /bulma-stylus@0.9.1:
+    resolution: {integrity: sha512-00u1O/RTyA+9SYZVYljliZcTltgCeZ/Ln0dLzAhYEWkS8WaMf7KWIimbnozSwemhlM0ZiDsHIMvMjoUAayRZ9Q==}
     dev: false
 
   /bytes@3.0.0:
