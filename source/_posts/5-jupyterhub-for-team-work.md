@@ -196,7 +196,7 @@ mkdir 01-notebooks
 sudo su
 chmod 777 01-notebooks
 cd /home/hubuser/
-ln ln -s /var/share/project/01-notebooks 01-notebooks
+ln -s /var/share/project/01-notebooks 01-notebooks
 ```
 
 通过以上设置，用户就可以

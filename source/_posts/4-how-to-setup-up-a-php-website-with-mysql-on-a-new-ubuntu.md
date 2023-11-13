@@ -133,10 +133,12 @@ sudo docker load < oo7.tar #导入镜像
 
 ![果然，一旦写起教程来，发现细节特别多](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/fanzao.jpeg)
 
-### 使用
+### 部署php环境
 
-安装mysql服务
-(本文未完成，待续)
+然后就是部署php环境的阶段，虽然按照正常流程是php、mysql、nginx这样依次安装，但是这样效率太低了，这里还是推荐用docker安装：
+
+[https://github.com/ogenes/docker-lnmp](https://github.com/ogenes/docker-lnmp)
+根据教程就可以部署php网站了。
 
 ## 鸣谢
 
