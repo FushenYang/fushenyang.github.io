@@ -140,6 +140,32 @@ sudo docker load < oo7.tar #导入镜像
 [https://github.com/ogenes/docker-lnmp](https://github.com/ogenes/docker-lnmp)
 根据教程就可以部署php网站了。
 
+按照这个教程自己配置nginx就可以了。
+
+``` bash
+server {
+    listen 80;
+    server_name     localhost 127.0.0.1;
+
+    root /var/www;
+    index index.php index.html;
+
+    charset utf-8;
+    default_type text/html;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+  include conf.d/fpm/php74-fpm;
+}
+```
+
+然后安装php网站会碰到以下错误：`Host '172.19.0.74' is not allowed to connect to this MySQL server`
+
+进入容器：`docker compose exec mysql mysql -u root -p`,参照这个解决：[解决思路](https://blog.csdn.net/mazaiting/article/details/106661158)，执行完更改表之后，记得执行`FLUSH PRIVILEGES;` .
+
+然后就可以安装任意的php网站了。
+
 ## 鸣谢
 
 特别鸣谢我的妻子，她帮我写了一个小的手册文章，所以我有时间精力写下这篇教程。
