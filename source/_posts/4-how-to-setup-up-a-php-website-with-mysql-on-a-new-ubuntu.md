@@ -133,7 +133,7 @@ sudo docker load < oo7.tar #导入镜像
 
 ![果然，一旦写起教程来，发现细节特别多](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/fanzao.jpeg)
 
-### 安装mysql服务
+### 使用
 
 安装mysql服务
 (本文未完成，待续)

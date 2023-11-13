@@ -57,12 +57,16 @@ sudo systemctl ssh
 
 第一时间找到官方教程总是不会错的[Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)，根据教程可以完成安装。
 
+官方的教程如下：
+
 ```bash
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
+
+以下教程均是按照官方脚本执行之后配置。不过，这里强烈建议不要完全按照官方教程来做，原因见后面章节。如果你能把教程全部看完之后再操作，建议把minicoda安装在/opt/miniconda/。
 
 安装好之后，记得运行`~/miniconda3/bin/conda init bash`这个命令把miniconda加入到环境变量里,然后重新登录一下就激活了conda的base环境了。
 
@@ -103,12 +107,18 @@ jupyterhub -f jupyterhub_config.py #运行jupyterhub,这个命令一般也用来
 
 ```bash
 pip3 install ipykernel
-python -m ipykernel install --user --name=jupyterhub --display-name "dev default"
+python3 -m ipykernel install --name=jupyterhub --display-name "dev_default"
+#jupyter kernelspec list #列出kernel
+#jupyter kernelspec uninstall jupyterhub #卸载kernel
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas # 安装一个包看看虚拟环境中的包是否在kernel中生效
 ```
 
-![直接成功，这样就可以随意调整kernel的环境了](5-jupyterhub-for-team-work/kernel_success.png)
+两个心得：
 
+1. 因为使用jupyterhub环境安装的jupyterhub（怎么读着那么绕……），所有jupyterhub再后来的子用户就默认都具有jupyterhub这个虚拟环境，安装kernel指少在这里并不是必须的（更绕了），但这里还是提一下，如果想给所有用户都配置可选的kernel意外的困难，毕竟jupyterhub就装在jupyterhub虚拟环境下（……）；
+2. `pip -i`参数可以加快安装速度，另外也不用额外的更改源，意外的好用。
+
+![直接成功，这样就可以随意调整kernel的环境了](5-jupyterhub-for-team-work/kernel_success.png)
 
 ```jupyterhub_config.py```文件中写入如下内容
 
@@ -128,18 +138,18 @@ c.LocalAuthenticator.create_system_users = True
 which jupyterhub #这个命令确定Environment的目录
 
 #这段脚本根据你自己的情况改一下再用
-cat <<EOT > /etc/systemd/system/jupyterhub.service
+sudo sh -c "cat <<EOT > /etc/systemd/system/jupyterhub.service
 [Unit]
 Description=JupyterHub
 
 [Service]
 User=root
-Environment="PATH=/root/anaconda3/envs/jupyterhub/bin/"
-ExecStart=/root/anaconda3/envs/jupyterhub/bin/jupyterhub -f /root/jupyterhub/jupyterhub_config.py
+Environment="PATH=/home/peter/miniconda3/envs/jupyterhub/bin/:/usr/local/bin/:/usr/bin/:/usr/sbin/"
+ExecStart=/home/peter/miniconda3/envs/jupyterhub/bin/jupyterhub -f /home/peter/jupyterhub/jupyterhub_config.py
 
 [Install]
 WantedBy=multi-user.target
-EOT
+EOT"
 #以上命令是以root用户安装conda为例子进行的
 
 sudo systemctl daemon-reload
@@ -149,12 +159,56 @@ sudo systemctl status jupyterhub
 #sudo systemcl restart jupyterhub
 #sudo systemctl disable jupyterhub
 #sudo systemctl stop jupyterhub
+#sudo journalctl -u jupyterhub -n 50 #这是查看日志的命令
 ```
 
-这样整个jupyterhub就配置好了。
+这样整个jupyterhub就配置好了。再次尝试添加用户，成功添加。
+![用户添加成功](5-jupyterhub-for-team-work/add-user_success.png)
+然后用管理员登录，给这个用户设置一个密码`sudo useradd -m -s /bin/bash hubuser && sudo passwd hubuser`，用户就可以登录了，然后我们就看到了错误。
 
-## 添加用户和用户权限的管理
+![是的，没有成功，这个教程也会展示一些失败的部分](5-jupyterhub-for-team-work/something-wrong-in-the-begining.png)
+
+这是说明一开始就配置错误了，conda被安装在了用户目录下，新添加的用户完全访问不到。等于是官方教程的`mkdir -p ~/miniconda3`这个命令开始就出错了，应该把miniconda安装在/opt里才比较合适，事到如今，只能尝试修复一下权限了。
+
+```bash
+sudo -u hubuser /home/peter/miniconda3/envs/jupyterhub/bin/jupyterhub-singleuser -h
+chmod 755 ~/home/peter/
+```
+
+提示：如果有机会重新配置conda，一定要安装在/opt目录。
+
+![经历漫长的配置，“一般”用户可以关注开发了](5-jupyterhub-for-team-work/users-run-command-under.png)
+
+虽然配置工作很辛苦，不过至少环境可以统一了，如果用户多一点（也不需要特别多，节约的精力依然可观）。
 
 ## 用户目录配置
 
+`sudo mkdir share && chmod 777 share/`首先建立一个目录供所有人共享使用。
+
+建立起基本的目录结构
+`mkdir pub codes project`
+
+通过以下方式可讲目录的权限给到任意用户。
+
+``` bash
+cd /var/share/project/
+mkdir 01-notebooks
+sudo su
+chmod 777 01-notebooks
+cd /home/hubuser/
+ln ln -s /var/share/project/01-notebooks 01-notebooks
+```
+
+通过以上设置，用户就可以
+
 ## 小结
+
+至此，一个小型的可多人共享的jupyterhub配置好了，团队需要共享的代码可以放到share目录中，权限根据linux系统的权限来管理。对于管理员来说，需要进行的操作无非就是如下几种：
+
+1. 创建用户，并设置密码以及忘记密码时重置密码
+2. 维护项目目录的文件内容
+3. 把目录挂载给指定用户，并设置适当的权限
+4. 删除用户的权限或者不允许其再看到对应的目录
+5. 给虚拟环境安装适当的软件包
+
+以上就是管理员所有操作的枚举，只要管理员熟悉了以上操作，就可以让团队利用好jupyterhub顺利推进工作啦。
