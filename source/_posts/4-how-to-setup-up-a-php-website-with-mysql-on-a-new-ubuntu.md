@@ -131,7 +131,7 @@ sudo docker load < oo7.tar #导入镜像
 
 这里的细节其实很多，因为虚拟机是NAT模式联网，我通过web界面把文件上传到了服务器上。这时候发现如果我当初安装的server版，没有gui，那么这个工作还非常难以实现呢。虽然就算有GUI，也是因为我有自己的文件中转服务才能简单实现。
 
-![果然，一旦写起教程来，发现细节特别多](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/fanzao.jpeg)
+![果然，一旦写起教程来，发现细节特别多](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/fanzao.jpg)
 
 ### 部署php环境
 
