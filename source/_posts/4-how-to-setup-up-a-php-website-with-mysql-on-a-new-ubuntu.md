@@ -139,10 +139,51 @@ sudo docker load < oo7.tar #导入镜像
 
 [https://github.com/ogenes/docker-lnmp](https://github.com/ogenes/docker-lnmp)
 根据教程就可以部署php网站了。
-
-按照这个教程自己配置nginx就可以了。
+如果以dzzoffice项目的安装为例子，目录结构如下：
+|____docker-lnmp
+| |____nginx
+| |____php74
+| |____php81
+| |____php73
+| |____php72
+| |____php71
+| |____mysql
+| |____php80
+| |____php56
+| |____redis
+|____www
+| |____static
+| |____misc
+| |____install
+| |____user
+| |____config
+| |____dzz
+| |____core
+| |____data
+| |____admin
 
 ``` bash
+find ./ -mindepth 1 -maxdepth 2 -type d | sed -e 's;[^/]*/;|____;g;s;____|; |;g' 确认目录结构，如上图
+cd docker-lnmp #来到环境目录
+cp .env.example .env #创建配置文件
+sed -i 's/NGINX_HOST_HTTP_PORT=.*/NGINX_HOST_HTTP_PORT=8086/' .env #替换其中的某些配置，比如，设置端口
+docker network create backend --subnet=172.19.0.0/16 #关键步骤，为容器应用创建子网络
+docker network ls | grep backend
+docker compose up -d nginx php74 mysql #启动应用，这个命令会非常慢，可以尝试配置docker源的方式加速
+# echo '{"registry-mirrors":["http://hub-mirror.c.163.com"]}' | sudo tee /etc/docker/daemon.json
+# systemctl restart docker
+# docker info #查看配置结果
+# #在Dockerfile中的apt也可以配置更新源来加速，在apt-get update之前添加一行命令就可以了
+# RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+# #sed格式如下
+# sed '/^RUN apt-get update/ i\
+# RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+# ' Dockerfile
+
+
+docker compose restart nginx #修改配置后启动某些容器
+
+sudo sh -c "cat <<EOT > ./docker-lnmp/nginx/conf.d/default.conf
 server {
     listen 80;
     server_name     localhost 127.0.0.1;
@@ -158,11 +199,20 @@ server {
     }
   include conf.d/fpm/php74-fpm;
 }
+EOT" 设置
 ```
 
 然后安装php网站会碰到以下错误：`Host '172.19.0.74' is not allowed to connect to this MySQL server`
+参照这个[解决思路](https://blog.csdn.net/mazaiting/article/details/106661158)可以通过更改访问权限来解决问题。
 
-进入容器：`docker compose exec mysql mysql -u root -p`,参照这个解决：[解决思路](https://blog.csdn.net/mazaiting/article/details/106661158)，执行完更改表之后，记得执行`FLUSH PRIVILEGES;` .
+进入容器：`docker compose exec mysql mysql -u root -p`,
+执行命令：
+
+``` sql
+select host,user from user; --查看用户权限配置
+update user set host = '%' where user ='root'; --开放外部连接
+flush privileges; --更新权限
+```
 
 然后就可以安装任意的php网站了，为了在网速“不快”的服务器上，可以利用`docker save -o myimages.tar image1:tag1 image2:tag2` 把多个镜像导出到一个文件，这样就可以整体搬家了。
 

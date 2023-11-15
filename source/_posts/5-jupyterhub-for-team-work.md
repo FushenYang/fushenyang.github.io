@@ -179,7 +179,24 @@ chmod 755 ~/home/peter/
 
 ![经历漫长的配置，“一般”用户可以关注开发了](5-jupyterhub-for-team-work/users-run-command-under.png)
 
-虽然配置工作很辛苦，不过至少环境可以统一了，如果用户多一点（也不需要特别多，节约的精力依然可观）。
+虽然配置工作很辛苦，不过至少环境可以统一了，如果用户多一点（也不需要特别多，节约的精力依然可观），使用conda在对应虚拟环境下安装的包都可以让所有用户共享。对于某些的特定的共享文件，可以放在共享系统库目录中共享,`python -c "import sys;print(sys.path)"`命令输出的地址都可以放置共享文件。另外对于，需要使用ctypes.cdll.LoadLibrary函数加载的模块，系统会寻找LD_LIBRARY_PATH设置的目录，对于systemd，设置两个节点就可以了。
+
+``` bash
+#这是配置例子，实际测试过并没有成功
+[Service]
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+Environment="LD_LIBRARY_PATH=/opt/gams/"
+```
+
+![是的，最终没有成功，jupyterhub貌似忽略了systemd的环境变量](5-jupyterhub-for-team-work/systemd_LD_LIBRARY_PATH_not_working.png)
+
+需要在jupyterhub_config.py文件中配置保留哪些环境变量[参考链接](https://github.com/jupyterhub/jupyterhub/issues/2630)。
+
+``` python
+c.Spawner.env_keep = ['LD_LIBRARY_PATH','PATH', 'PYTHONPATH', 'CONDA_ROOT', 'CONDA_DEFAULT_ENV', 'VIRTUAL_ENV', 'LANG', 'LC_ALL', 'JUPYTERHUB_SINGLEUSER_APP']
+```
+
+我们来捋一下环境变量的传递：首先系统运行bash的时候会加载用户自己和系统通用的环境变量->conda环境会激活部分环境变量->systemd的unit文件忽略系统变量，可以自己设置->jupyterhub要设置过滤哪些，默认继承的环境变量里没有LD_LIBRARY_PATH。感觉就是个环境变量的传递游戏。
 
 ## 用户目录配置
 
