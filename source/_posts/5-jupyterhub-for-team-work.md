@@ -115,7 +115,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas # 安装一个包
 
 两个心得：
 
-1. 因为使用jupyterhub环境安装的jupyterhub（怎么读着那么绕……），所有jupyterhub再后来的子用户就默认都具有jupyterhub这个虚拟环境，安装kernel指少在这里并不是必须的（更绕了），但这里还是提一下，如果想给所有用户都配置可选的kernel意外的困难，毕竟jupyterhub就装在jupyterhub虚拟环境下（……）；
+1. 因为使用jupyterhub环境安装的jupyterhub（怎么读着那么绕……），所有jupyterhub再后来的子用户就默认都具有jupyterhub这个虚拟环境，安装kernel至少在这里并不是必须的（更绕了），但这里还是提一下，如果想给所有用户都配置可选的kernel意外的困难，毕竟jupyterhub就装在jupyterhub虚拟环境下（……）；
 2. `pip -i`参数可以加快安装速度，另外也不用额外的更改源，意外的好用。
 
 ![直接成功，这样就可以随意调整kernel的环境了](5-jupyterhub-for-team-work/kernel_success.png)
