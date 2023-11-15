@@ -198,6 +198,8 @@ c.Spawner.env_keep = ['LD_LIBRARY_PATH','PATH', 'PYTHONPATH', 'CONDA_ROOT', 'CON
 
 我们来捋一下环境变量的传递：首先系统运行bash的时候会加载用户自己和系统通用的环境变量->conda环境会激活部分环境变量->systemd的unit文件忽略系统变量，可以自己设置->jupyterhub要设置过滤哪些，默认继承的环境变量里没有LD_LIBRARY_PATH。感觉就是个环境变量的传递游戏。
 
+![环境变量最终“穿透”成功](5-jupyterhub-for-team-work/systemd_LD_LIBRARY_PATH_pass.png)
+
 ## 用户目录配置
 
 `sudo mkdir share && chmod 777 share/`首先建立一个目录供所有人共享使用。
