@@ -144,7 +144,7 @@ Description=JupyterHub
 
 [Service]
 User=root
-Environment="PATH=/home/peter/miniconda3/envs/jupyterhub/bin/:/usr/local/bin/:/usr/bin/:/usr/sbin/"
+Environment=PATH=/home/peter/miniconda3/envs/jupyterhub/bin/:/usr/local/bin/:/usr/bin/:/usr/sbin/
 ExecStart=/home/peter/miniconda3/envs/jupyterhub/bin/jupyterhub -f /home/peter/jupyterhub/jupyterhub_config.py
 
 [Install]
@@ -156,7 +156,7 @@ sudo systemctl daemon-reload
 sudo systemctl start jupyterhub
 sudo systemctl enable jupyterhub
 sudo systemctl status jupyterhub
-#sudo systemcl restart jupyterhub
+#sudo systemctl restart jupyterhub
 #sudo systemctl disable jupyterhub
 #sudo systemctl stop jupyterhub
 #sudo journalctl -u jupyterhub -n 50 #这是查看日志的命令
@@ -199,7 +199,84 @@ cd /home/hubuser/
 ln -s /var/share/project/01-notebooks 01-notebooks
 ```
 
-通过以上设置，用户就可以
+通过以上设置，就可以使用linux的权限管理机制来管理用户的文件了。
+
+## gams安装
+
+[这是安装文档](https://www.gams.com/45/docs/UG_UNIX_INSTALL.html)
+
+[这个可以用来参考在虚拟环境中安装gams](https://www.gams.com/latest/docs/API_PY_GETTING_STARTED.html)
+
+安装gams其实比想的要简单，只要按照文档把gams解压，并配置好环境变量就可以了。
+
+对于jupyterhub的情况，在systemd的注册脚本中，在`Environment`配置节点，把gams所在的目录添加进去，就可以完成配置了。本教程主打一个详细，看到无数教程都写如何配置，但是最重要的其实是怎么确定配置好了。这里提供gams的例子：
+
+``` bash
+sh -c "cat <<EOT > ~/example.gams
+Sets
+     i   canning plants   / seattle, san-diego /
+     j   markets          / new-york, chicago, topeka / ;
+
+Parameters
+
+     a(i)  capacity of plant i in cases
+       /    seattle     350
+            san-diego   600  /
+
+     b(j)  demand at market j in cases
+       /    new-york    325
+            chicago     300
+            topeka      275  / ;
+
+Table d(i,j)  distance in thousands of miles
+                  new-york       chicago      topeka
+    seattle          2.5           1.7          1.8
+    san-diego        2.5           1.8          1.4  ;
+
+Scalar f  freight in dollars per case per thousand miles  /90/ ;
+
+Parameter c(i,j)  transport cost in thousands of dollars per case ;
+
+          c(i,j) = f * d(i,j) / 1000 ;
+
+Variables
+     x(i,j)  shipment quantities in cases
+     z       total transportation costs in thousands of dollars ;
+
+Positive Variable x ;
+
+Equations
+     cost        define objective function
+     supply(i)   observe supply limit at plant i
+     demand(j)   satisfy demand at market j ;
+
+cost ..        z  =e=  sum((i,j), c(i,j)*x(i,j)) ;
+
+supply(i) ..   sum(j, x(i,j))  =l=  a(i) ;
+
+demand(j) ..   sum(i, x(i,j))  =g=  b(j) ;
+
+Model transport /all/ ;
+
+Solve transport using lp minimizing z ;
+
+Display x.l, x.m ;
+EOT"
+```
+
+以上是官方例子的模型，在用python调用。
+
+``` python
+from gams import GamsWorkspace
+import os
+ws = GamsWorkspace()
+job = ws.add_job_from_file(os.getcwd() + "/example.gams")
+job.run()
+for rec in job.out_db["x"]:
+    print(f"x({rec.key(0)},{rec.key(1)}): level={rec.level} marginal={rec.marginal}")
+```
+
+![这就是配置好的效果～](5-jupyterhub-for-team-work/gams_run.jpg)
 
 ## 小结
 

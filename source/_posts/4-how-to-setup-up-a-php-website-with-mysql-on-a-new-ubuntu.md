@@ -164,7 +164,7 @@ server {
 
 进入容器：`docker compose exec mysql mysql -u root -p`,参照这个解决：[解决思路](https://blog.csdn.net/mazaiting/article/details/106661158)，执行完更改表之后，记得执行`FLUSH PRIVILEGES;` .
 
-然后就可以安装任意的php网站了。
+然后就可以安装任意的php网站了，为了在网速“不快”的服务器上，可以利用`docker save -o myimages.tar image1:tag1 image2:tag2` 把多个镜像导出到一个文件，这样就可以整体搬家了。
 
 ## 鸣谢
 
