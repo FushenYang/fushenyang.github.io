@@ -131,7 +131,7 @@ sudo docker load < oo7.tar #导入镜像
 
 这里的细节其实很多，因为虚拟机是NAT模式联网，我通过web界面把文件上传到了服务器上。这时候发现如果我当初安装的server版，没有gui，那么这个工作还非常难以实现呢。虽然就算有GUI，也是因为我有自己的文件中转服务才能简单实现。
 
-![果然，一旦写起教程来，发现细节特别多](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/fanzao.jpg)
+![果然，一旦写起教程来，发现细节特别多](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/fanzao.png)
 
 ### 部署php环境
 
@@ -193,11 +193,11 @@ server {
     default_type text/html;
 
     location / {
-        try_files $uri $uri/ /index.php$is_args$args;
+        try_files \$uri \$uri/ /index.php\$is_args\$args;
     }
   include conf.d/fpm/php74-fpm;
 }
-EOT" 设置
+EOT" #设置
 ```
 
 然后安装php网站会碰到以下错误：`Host '172.19.0.74' is not allowed to connect to this MySQL server`
@@ -213,6 +213,42 @@ flush privileges; --更新权限
 ```
 
 然后就可以安装任意的php网站了，为了在网速“不快”的服务器上，可以利用`docker save -o myimages.tar image1:tag1 image2:tag2` 把多个镜像导出到一个文件，这样就可以整体搬家了。
+
+## **特别注意**
+
+如果修改了.env一定要重新rebuild，env的参数进入dockerfile是build时发生的。
+
+``` bash
+docker compose down
+docker compose up -d --build mysql nginx php74
+```
+
+## 具体例子dzzoffice部署
+
+通过以上部署，dzzoffice网站就可以安装了,<http://ip:port/install/index.php>这个网址是固定安装目录。
+
+![先看到安装界面](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_1.png)
+![检查扩展，php的扩展很多，安装程序先做检查](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_2.png)
+
+![目录权限需要修正](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_3.1.png)
+
+![chmod -R 777 config/ data/](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_3.2.png)
+
+![填写数据库信息，这里会报错，参考教程修改数据库访问权限](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_4.png)
+
+![安装过程非常迅速](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_5.png)
+
+![设置管理员账户](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/setup_6.png)
+
+网站运行起来了，然后就是设置，第一项是把onlyoffice配置好，在线浏览文章的功能是必要的。
+
+![`chmod 777 -R dzz/`给插件目录添加权限](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/dzz_error.png)
+
+![onlyoffice要装](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/dzz_oo.png)
+
+![网盘也是必装](4-how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu/dzz_wp.png)
+
+然后一个可以共享文件的小平台就建立好了。
 
 ## 鸣谢
 

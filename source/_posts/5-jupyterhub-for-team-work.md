@@ -72,7 +72,7 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ## 安装jupyterhub
 
-虽然也有非常方便的tljh安装方式，不过，实际使用的时候tljh特别考验网络速度，完全没有conda来的快捷，另外使用conda安装更好定制，所以，这里推荐用conda来安装jupyterhub。
+虽然也有非常方便的tljh安装方式。实际落地的话，下载tljh特别考验网络速度，完全没有conda来的快捷，另外使用conda安装更好定制，所以，这里推荐用conda来安装jupyterhub。
 
 ```bash
 conda create -n python310 python=3.10 #创建基础环境
