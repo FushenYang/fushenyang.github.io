@@ -9,8 +9,8 @@ dependencies:
     specifier: 0.8.0
     version: 0.8.0
   hexo-asset-link:
-    specifier: ^2.2.2
-    version: 2.2.2(hexo@6.3.0)
+    specifier: ^2.2.3
+    version: 2.2.3(hexo@6.3.0)
   hexo-cli:
     specifier: ^4.3.1
     version: 4.3.1
@@ -2026,10 +2026,10 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
-  /hexo-asset-link@2.2.2(hexo@6.3.0):
-    resolution: {integrity: sha512-wJDngeQXJic2CStUVIKqDdV16Fkh5pwliV8hEyLjeBfY7YoYIEeuDsY+n2VPRIXomaw4GnFG6jVVBne7lrHY1w==}
+  /hexo-asset-link@2.2.3(hexo@6.3.0):
+    resolution: {integrity: sha512-sCPFeCQ6GelBvxDqJMzS04sigOpW5Dd+oBvFoahHu0MTYSPcI9bXaCnvPd0TZuLHCZK1OSnwZ0q2wdAhlaWbbw==}
     peerDependencies:
-      hexo: ^4.0.0 || ^5.0.0 || ^6.0.0
+      hexo: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
     dependencies:
       hexo: 6.3.0
     dev: false
