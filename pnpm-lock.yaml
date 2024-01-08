@@ -15,8 +15,8 @@ dependencies:
     specifier: ^4.3.1
     version: 4.3.1
   hexo-component-inferno:
-    specifier: ^2.0.3
-    version: 2.0.3
+    specifier: ^2.0.4
+    version: 2.0.4
   hexo-deployer-git:
     specifier: ^4.0.0
     version: 4.0.0
@@ -2050,8 +2050,8 @@ packages:
       resolve: 1.22.6
       tildify: 2.0.0
 
-  /hexo-component-inferno@2.0.3:
-    resolution: {integrity: sha512-9yBs2wacCIjwpYBKwOzRH7hFFGEfzb2c27u3Al/XbCPePrS3MP2TTYBjRC2E03nQe341wf/6SMUzzgLeHoQVsQ==}
+  /hexo-component-inferno@2.0.4:
+    resolution: {integrity: sha512-omxq1ev2HqzjtEKQ933Rb7cv2Xm4gvpT9XTBm5AJOvo0AnnpXkWcADFPVaIBq9caNUY2DMZxGfE1N2rWpOsIxQ==}
     engines: {node: '>=12.4.0'}
     dependencies:
       ajv: 8.12.0
