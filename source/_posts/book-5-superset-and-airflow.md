@@ -103,7 +103,7 @@ podman run hello-world
 podman logs -l
 ```
 
-看到输出的一瞬间我明白了。airflow的错误输出正是由于logs命令运行正常，是我没有对airflow做正确的配置。
+看到输出的一瞬间我明白了。airflow的错误输出正是由于logs命令运行正常，是我没有对airflow做正确的配置。这个错误虽然很小，但是也非常有趣，容器内部和外部环境形成了“隔层”，但是内部程序是不知道的，他努力的发出声音也是因为没有配置好，但是这个声音的渠道被我听到了，是不是就构成了一种“穿透”。形式上就是，我输出podman日志的预期看到了容器的日志，从而担心整个podman环境出现了什么问题。我觉得这也是奎因第二类问题的一种体现。
 
 如果用容器运行airflow不是最默认的方式肯定是有原因的，尝试没有配置好的话，就按照[最默认的方式来吧](https://airflow.apache.org/docs/apache-airflow/stable/start.html)。
 
@@ -145,3 +145,69 @@ superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
 最后就注册成服务，可以随意使用了。其中有个点，如果User配置为root，账号密码不可用。这样让人非常在意账号密码存在哪里？还是说执行初始化的时候和用户关联了？
 
 ![果然，破案了](book-5-superset-and-airflow/superset_database.png)
+
+## 配置casdoor
+
+嗯，突然配置这个东西，确实有些跳跃。不过类似于游戏技能树一样，这个模块配置好可以很大程度上解决登录问题。
+首先，还是看看rocky上怎么安装docker吧，毕竟，podman还是有些问题，生产环境中docker用的更多一点。
+经过测试，casdoor确实可以在内网部署https服务，使用acme.sh申请证书。
+
+``` bash
+sudo docker compose restart casdoor
+sudo docker compose restart casdoor_proxy
+```
+
+配置这个重点是要生成证书，这样要学习一下acme.sh了。`curl https://get.acme.sh | sh -s email=fsy@gmail.com`
+acme.sh结合cloudflare可以很容易的生成证书。主要都是证书的安装细节和注册脚本了。根据需要要安装cron:`sudo dnf install crontabs`
+
+无论如何，安装sso的服务端都还是简单的，下一步就是考虑如何把用户端配置好，配置流程如下：
+
+1. SSO_CLIENT_ID和SSO_CLIENT_SERCRET是在SSO服务端生成的；
+2. 应用的实际生成地址需要提供给SSO作为callback;
+3. 使用命令行注入ca.cer的位置；
+4. 把sso中应用公钥的信息提供给应用。
+
+注册到这里就出错了，node无法识别le的证书，本来node就没有le的证书，这里更换zerossl证书试试（之后依然要重新注入）。
+最后还是选择了注册zerossl的账号，至此，我终于了解了证书的运作机制，并了解了acme.sh工具的使用。
+
+经过一通操作，至少在自己的实验环境搞定了。然后把app和sso都准备一份部署工具，等完全部署好，就可以了。
+
+
+
+## 开始配置homelab
+
+假期开始，终于有足够的时间配置属于我的homelab了，服务器也就位了。借助pve和cloudflare尝试构建homelab。之前我一直担心，cf的tunnel是不是不够快？现在想到我的homelab我突然明白了，如果我自己用就没有这个问题了。首先试试[authentik](https://goauthentik.io/docs/installation/docker-compose)
+
+首先，尝试用podman部署一下authentik。`sudo dnf install podman`安装podman。然后就是一系列命令：
+
+``` bash
+sudo dnf install python3
+sudo dnf install python3-pip
+pip3 install podman-compose
+sudo dnf install -y epel-release
+sudo dnf install -y pwgen
+```
+
+使用podman失败了，但是不清楚可能的原因，所以，还是老老实实装docker吧。
+
+``` bash
+sudo dnf remove docker \
+  docker-client \
+  docker-client-latest \
+  docker-common \
+  docker-latest \
+  docker-latest-logrotate \
+  docker-logrotate \
+  docker-selinux \
+  docker-engine-selinux \
+  docker-engine
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo systemctl start docker
+sudo systemctl enable docker.service
+```
+
+根据教程进行安装到是很快，利用cf的tunnel也很容易把服务发布出去，不过证书和配置应用搞不好就没有那么简单了。毕竟这个compose文件都没有看太懂。
+
+自己的小homelab运行一两天就会发现进程号到了几十、几百万，估计还是哪里有泄漏。果然很多事情是自己实践之后才能发现的。
