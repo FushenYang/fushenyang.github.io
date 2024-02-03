@@ -164,15 +164,37 @@ acme.sh结合cloudflare可以很容易的生成证书。主要都是证书的安
 
 1. SSO_CLIENT_ID和SSO_CLIENT_SERCRET是在SSO服务端生成的；
 2. 应用的实际生成地址需要提供给SSO作为callback;
-3. 使用命令行注入ca.cer的位置；
+3. 使用命令行注入ca.cer的位置；export NODE_EXTRA_CA_CERTS=/real/path/ca.cer;
 4. 把sso中应用公钥的信息提供给应用。
 
 注册到这里就出错了，node无法识别le的证书，本来node就没有le的证书，这里更换zerossl证书试试（之后依然要重新注入）。
-最后还是选择了注册zerossl的账号，至此，我终于了解了证书的运作机制，并了解了acme.sh工具的使用。
+最后还是选择了注册zerossl的账号，至此，我终于了解了证书的运作机制，并了解了acme.sh工具的使用。[可以参考的教程还是很多的](https://ffis.me/archives/2110.html).
 
 经过一通操作，至少在自己的实验环境搞定了。然后把app和sso都准备一份部署工具，等完全部署好，就可以了。
 
+其中使用一个fetch函数可以验证证书有没有配置好。
 
+``` javascript
+fetch('https://door.tcub.site')
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+//node test.js
+```
+
+node当然需要专门安装:
+
+```bash
+dnf module list nodejs
+dnf module -y install nodejs:20/common
+```
+
+以casdoor为中心，就能很大程度上解决用户管理的问题了。
+
+### troubleshoot
+
+早起发现无法正常生成buct.online的证书，“明明昨天还是正常的呀”然后一看昨天的证书其实也是不正常的。却少必要的公共证书。经过一个小时的波折，冷静了下来，法相原来是dns_cf的key的问题。之前的key只是访问一个域名的（或者至少zone_id只能指向一个域名）。
+zone_id可以在dns管理对应域名的信息页面找到。令牌的话，在个人信息（右上角）里：My Profile->API Tokens->use DNS:edit_template就可以获得了。
 
 ## 开始配置homelab
 
@@ -191,16 +213,8 @@ sudo dnf install -y pwgen
 使用podman失败了，但是不清楚可能的原因，所以，还是老老实实装docker吧。
 
 ``` bash
-sudo dnf remove docker \
-  docker-client \
-  docker-client-latest \
-  docker-common \
-  docker-latest \
-  docker-latest-logrotate \
-  docker-logrotate \
-  docker-selinux \
-  docker-engine-selinux \
-  docker-engine
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest \
+  docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
@@ -209,5 +223,21 @@ sudo systemctl enable docker.service
 ```
 
 根据教程进行安装到是很快，利用cf的tunnel也很容易把服务发布出去，不过证书和配置应用搞不好就没有那么简单了。毕竟这个compose文件都没有看太懂。
-
 自己的小homelab运行一两天就会发现进程号到了几十、几百万，估计还是哪里有泄漏。果然很多事情是自己实践之后才能发现的。
+
+有了自己的homelab之后发现vscode更加好用了，然后再次意识到，还是使用证书访问更加方便。
+
+``` bash
+ssh-keygen -t rsa -b 4096
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@192.168.1.1 //for linux client
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@192.168.1.1 "mkdir .ssh && cat >> .ssh/authorized_keys" // for win
+```
+
+## node网站镜像化
+
+一个简单的node网站，是用的时候确实有问题的情况，直接发布镜像会方便一些。
+建立数据库可能会用到的一些脚本。
+
+``` bash
+npx prisma db push
+```

@@ -161,6 +161,8 @@ sudo docker load < oo7.tar #导入镜像
 | |____admin
 
 ``` bash
+find . -name "._*" -print ## 检查缓存文件
+find . -name "._*" -delete ## 清除缓存
 find ./ -mindepth 1 -maxdepth 2 -type d | sed -e 's;[^/]*/;|____;g;s;____|; |;g' 确认目录结构，如上图
 cd docker-lnmp #来到环境目录
 cp .env.example .env #创建配置文件
@@ -209,12 +211,48 @@ EOT" #设置
 执行命令：
 
 ``` sql
+show databases;
+use mysql;
 select host,user from user; --查看用户权限配置
 update user set host = '%' where user ='root'; --开放外部连接
 flush privileges; --更新权限
 ```
 
 然后就可以安装任意的php网站了，为了在网速“不快”的服务器上，可以利用`docker save -o myimages.tar image1:tag1 image2:tag2` 把多个镜像导出到一个文件，这样就可以整体搬家了。
+
+### bonus 配置部署包
+
+网站在后期开发中可能需要添加扩展，扩展要通过composer安装。这样的情况目标机器上还是需要安装php，不同的系统不一样。[rocky9.3参考这里](https://www.linuxcapable.com/how-to-install-php-on-rocky-linux/)。
+
+``` bash
+sudo dnf config-manager --set-enabled crb
+sudo dnf install \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
+    https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
+sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y #key cmd line
+
+dnf module list php
+sudo dnf module enable php:remi-7.4 -y
+```
+
+然后就是安装[composer](https://getcomposer.org)了,为了部署方便，安装在本地就可以。
+
+``` bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php \
+php -r "unlink('composer-setup.php');" \
+php composer.phar require casdoor/casdoor-php-sdk #安装sdk的例子
+```
+
+**新的问题**配置到这里，虽然一切看似正常了，不过curl可以正常访问casdoor，可是php却提示缺少证书。这个时候才发现，证书是被配置在docker里的！因此，证书要暴露给docker……真的是复杂啊。
+
+进入docker，[参考这个文档](https://blog.csdn.net/yimuta9538/article/details/118695201)可以临时更新证书。
+
+``` bash
+sudo docker exec -it <container_id_or_name> bash
+## update certificates
+```
 
 ## **特别注意**
 
