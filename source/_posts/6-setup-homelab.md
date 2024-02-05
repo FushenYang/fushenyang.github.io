@@ -6,9 +6,9 @@ tags: 读书,折腾
 
 ## 前言
 
-假期屯了不少书，准备给自己一个充实的假期。好多东西想学习，airflow、superset、scrapy等，另外还想学习rocky linux，还有之前的kvm和pve的内容也想巩固。
+假期屯了不少书，准备给自己一个充实的假期。好多东西想学习，airflow、superset、scrapy等，另外还想学习rocky linux，还有之前的kvm和pve的内容也想巩固。总之就是要搞个homelab出来～
 
-![好多书，几乎每本都有惊喜的内容](book-5-superset-and-airflow/boos_about_new_tec.png)
+![好多书，几乎每本都有惊喜的内容](6-setup-homelab/boos_about_new_tec.png)
 
 另外，我终于有机会把这个学期学的内容进行实践了，目前的规划是给旧笔记本安装fedora，给小mini主机安装pve。新的小mini主机就作为服务器使用了。
 
@@ -34,15 +34,15 @@ systemctl restart networking
 reboot
 ```
 
-![PVE安装好了,这样就可以随便折腾了](book-5-superset-and-airflow/pve_init.png)
+![PVE安装好了,这样就可以随便折腾了](6-setup-homelab/pve_init.png)
 
 安装操作系统的时候意外顺利。
 
-![rocky安装好了](book-5-superset-and-airflow/setup_rocky.png)
+![rocky安装好了](6-setup-homelab/setup_rocky.png)
 
 一天下午的时间，我就安装了pve,fedora,rocky linux，感觉是挺充实的，并且由于之前阅读的关系，kvm的书籍让我重新理解了网络的模型，可以在配置上更加得心应手。
 
-![vmbr0这个网桥因为在kvm的书里看过，所以现在完全不虚](book-5-superset-and-airflow/pve_network.png)
+![vmbr0这个网桥因为在kvm的书里看过，所以现在完全不虚](6-setup-homelab/pve_network.png)
 
 ``` bash
 sudo dnf install qemu-guest-agent
@@ -51,7 +51,7 @@ sudo systemctl enable qemu-guest-agent
 sudo systemctl status qemu-guest-agent
 ```
 
-![1.pve中开启agent，2.安装agent，3.重启->以上流程完成就可以启动guest-agent了](book-5-superset-and-airflow/qemu_guest-agent.png)
+![1.pve中开启agent，2.安装agent，3.重启->以上流程完成就可以启动guest-agent了](6-setup-homelab/qemu_guest-agent.png)
 
 创建好base镜像，系统配置乱了随时回来。
 
@@ -109,7 +109,7 @@ podman logs -l
 
 干净的系统居然没有pip，需要自己安装`python -m ensurepip --default-pip`。
 
-![根据默认教程轻松就做好了](book-5-superset-and-airflow/airflow-start.png)
+![根据默认教程轻松就做好了](6-setup-homelab/airflow-start.png)
 
 基础硬件设施解决之后发现，其实很多开源软件直接安装即可，容器化并不能让每个问题都简单，甚至有时在不熟悉的情况下会复杂化。
 
@@ -121,7 +121,7 @@ podman logs -l
 
 启动之后发现无法登录，依然是仔细看日志，然后在[社区找到处理方案](https://github.com/apache/superset/issues/24579),这里提一下，这个社区的处理方案，提问人提问的方式太棒了非常详细。最终采用了两个配置建议（包括“TALISMAN_ENABLED”），最终见到了欢迎页面。中间一度很多错误，让我转向了docker部署，不过最终还是解决了。（原因是忘记运行`superset init`命令了）
 
-![意外的顺利，一个下午装好了，想想我当初学习tableau真是浪费时间](book-5-superset-and-airflow/superset_init.png)
+![意外的顺利，一个下午装好了，想想我当初学习tableau真是浪费时间](6-setup-homelab/superset_init.png)
 
 ``` txt
 [Unit]
@@ -144,7 +144,7 @@ superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
 
 最后就注册成服务，可以随意使用了。其中有个点，如果User配置为root，账号密码不可用。这样让人非常在意账号密码存在哪里？还是说执行初始化的时候和用户关联了？
 
-![果然，破案了](book-5-superset-and-airflow/superset_database.png)
+![果然，破案了](6-setup-homelab/superset_database.png)
 
 ## 配置casdoor
 
