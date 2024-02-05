@@ -235,6 +235,16 @@ dnf module list php
 sudo dnf module enable php:remi-7.4 -y
 ```
 
+当然还有个apt的例子。
+
+``` bash
+sudo apt-get update
+sudo apt -y install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt -y install php7.4
+```
+
 然后就是安装[composer](https://getcomposer.org)了,为了部署方便，安装在本地就可以。
 
 ``` bash

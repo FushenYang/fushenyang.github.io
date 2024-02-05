@@ -193,7 +193,7 @@ dnf module -y install nodejs:20/common
 
 ### troubleshoot
 
-早起发现无法正常生成buct.online的证书，“明明昨天还是正常的呀”然后一看昨天的证书其实也是不正常的。却少必要的公共证书。经过一个小时的波折，冷静了下来，法相原来是dns_cf的key的问题。之前的key只是访问一个域名的（或者至少zone_id只能指向一个域名）。
+早起发现无法正常生成域名的证书，“明明昨天还是正常的呀”然后一看昨天的证书其实也是不正常的。却少必要的公共证书。经过一个小时的波折，冷静了下来，法相原来是dns_cf的key的问题。之前的key只是访问一个域名的（或者至少zone_id只能指向一个域名）。
 zone_id可以在dns管理对应域名的信息页面找到。令牌的话，在个人信息（右上角）里：My Profile->API Tokens->use DNS:edit_template就可以获得了。
 
 ## 开始配置homelab
