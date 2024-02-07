@@ -1,12 +1,12 @@
 ---
-title: 随着假期开始的充电
+title: 随着假期开始的充电——搭建自己的homelab
 date: 2024-01-13 18:10:02
-tags: 读书,折腾
+tags: 读书,折腾,homelab
 ---
 
 ## 前言
 
-假期屯了不少书，准备给自己一个充实的假期。好多东西想学习，airflow、superset、scrapy等，另外还想学习rocky linux，还有之前的kvm和pve的内容也想巩固。总之就是要搞个homelab出来～
+假期屯了不少书，准备给自己一个充实的假期。好多东西想学习，airflow、superset、scrapy等，另外还想学习rocky linux，还有之前的kvm和pve的内容也想巩固。为了想法落地考虑利用时间搭建自己的homelab。
 
 ![好多书，几乎每本都有惊喜的内容](6-setup-homelab/boos_about_new_tec.png)
 
@@ -235,9 +235,10 @@ type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@192.168.1.1 "mkdir .ssh && cat 
 
 ## node网站镜像化
 
-一个简单的node网站，是用的时候确实有问题的情况，直接发布镜像会方便一些。
-建立数据库可能会用到的一些脚本。
+一个简单的node网站，是用的时候确实有问题的情况，直接发布镜像会方便一些，但是网站在使用了prisma的orm之后就需要在发布前建立数据库。建立数据库可能会用到的一些脚本如下：
 
 ``` bash
 npx prisma db push
 ```
+
+## 未完待续
