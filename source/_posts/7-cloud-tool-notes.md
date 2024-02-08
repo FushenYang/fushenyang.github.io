@@ -77,3 +77,32 @@ services:
 
 很容易就可以启动一个服务，然后用`sudo docker logs <container-id>`获取用户名密码，配置好存储源就可以访问了～
 使用<http://id:port/dav>和用户名密码就可以访问webdav服务了！真的是非常方便啊。
+
+## 学习tmux
+
+多终端操作的机会感觉非常多啊，看来还是应该好好学习一下终端使用，nohup太原始了，虽然可以学习screen，不过既然要学了，不如学新的，这样我就找到了tmux。
+
+``` bash
+tmux new -s hello
+sessions should be nested with care, unset $TMUX to force
+```
+
+简单上手就出问题了,果然要理解他的理念模型。真的使用起来之后其实就是简单的几条命令就可以完成，[教程](https://blog.csdn.net/NSJim/article/details/127754413)也非常多。
+
+``` bash
+tmux kill-server # 杀死所有进程
+tmux ls # 列出一个进程
+tmux new -s session_name #新建会话
+tmux a -t session_name #进入会话 attach
+tmux detach #分离会话，也就是让会话进入后台
+ctrl b d #上一命令快捷键（毕竟有时候进程在运行）
+exit #显式的杀死进程
+```
+
+也许最需要记忆的快捷键是`C-b ?`，这样可以看到帮助菜单。
+
+![很多实用命令简单就可以查到](7-cloud-tool-notes/tmux-helps.png)
+
+原始的帮助文档非常有帮助，比如`C-b s`这个命令，很多中文文档写的是列出会话，感觉是`tmux ls`的快捷键，可是按照应用内置的文档效果是“Choose a session from a list”，实际使用的效果来看，应用的帮助更加贴切。当然也有不方便的地方，对于mac而言，触控板的操作变成了“上下”，无法滚动浏览信息了。更加复杂的设置也有[参考帮助](https://www.jianshu.com/p/fd3bbdba9dc9),不过这里感觉可以点到为止，tmux暂时可以作为后台运行的工具就好了，更多的设置未来用到可以再考虑。当然，对于滚动的问题，也许我应该更加熟悉一下more命令也许更好。
+
+![vs的终端管理感觉就很够用了](7-cloud-tool-notes/vscode-multi-terminal.png)
