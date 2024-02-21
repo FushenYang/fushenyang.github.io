@@ -241,4 +241,8 @@ type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@192.168.1.1 "mkdir .ssh && cat 
 npx prisma db push
 ```
 
+## 建立首页
+
+终于来到了首页阶段，到目前为止，homelab的服务和连接已经非常多了，如果能有一个好的首页就好了，先动起来，随手找到了一个[首页](https://gethomepage.dev/latest/installation/docker/)项目，先把各种连接汇总吧。经过考虑zfile和authentik也许可以发布出去，其他的服务暂时还是放到家庭内网里比较好，必要的时候可以通过蒲公英访问。
+
 ## 未完待续
