@@ -191,10 +191,34 @@ dnf module -y install nodejs:20/common
 
 以casdoor为中心，就能很大程度上解决用户管理的问题了。
 
+不过，casdoor的角色配置也是有技巧的，有两个问题要解决：
+
+1. 如何限制用户的权限范围，比如只能登录指定应用；
+2. 如果防止用户登录casdoor本身这个系统；
+3. 如何使应用登录无缝化；
+
+实际使用起来，还是有些注意事项的:
+
+1. 如果防止应用用户和系统用户混乱（主要是昂志用户登录cas系统，这种情况下，需要建立新的组织，应用需要重新配置）；
+2. 新建组织的情况下，只有组织中有应用的情况才能添加用户成功；
+
+修改好了应用信息之后，需要重新发布一下就可以了。`docker build -t video:v7 .`
+
 ### troubleshoot
 
 早起发现无法正常生成域名的证书，“明明昨天还是正常的呀”然后一看昨天的证书其实也是不正常的。却少必要的公共证书。经过一个小时的波折，冷静了下来，法相原来是dns_cf的key的问题。之前的key只是访问一个域名的（或者至少zone_id只能指向一个域名）。
 zone_id可以在dns管理对应域名的信息页面找到。令牌的话，在个人信息（右上角）里：My Profile->API Tokens->use DNS:edit_template就可以获得了。
+
+### troubleshoot 2
+
+系统可能需要安装ca证书才能访问目标服务器，主要是使用[update-ca-certificates](https://www.cyberciti.biz/faq/update-ca-certificates-command-examples-in-linux-to-ssl-ca-certificates/)命令。[不同系统安装方式不一样](https://blog.csdn.net/SHELLCODE_8BIT/article/details/125250740)，这里记录一个ubuntu的例子。对于php74容器运行的php网站，需要进入容器更新证书才能实现sso通信。
+
+``` bash
+docker exec -i container_id bash #进入容器
+ls -l /etc/ssl/certs/ #查看所有的证书所在目录，可以把证书拷贝到这个目录
+vim /etc/ca-certificates.conf #把证书名字添加进去
+sudo update-ca-certificates #更新证书
+```
 
 ## 开始配置homelab
 
