@@ -265,8 +265,23 @@ type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@192.168.1.1 "mkdir .ssh && cat 
 npx prisma db push
 ```
 
+## ubuntu系统的磁盘管理
+
+ubuntu默认安装的情况下会使用lvm，当然lvm不是问题，但是他会预留太多空间，导致默认的硬盘很容易就满了。这个时候就可以通过[调整磁盘](https://4sysops.com/archives/extending-lvm-space-in-ubuntu/)获得空间。
+
+``` bash
+sudo df -Th
+sudo vgdisplay # or sudo vgs
+sudo lvdisplay
+sudo lvextend -l +100%FREE -r /dev/ubuntu-vg/ubuntu-lv
+```
+
+总体来说，lvm还是提高了整体的灵活性。
+
 ## 建立首页
 
-终于来到了首页阶段，到目前为止，homelab的服务和连接已经非常多了，如果能有一个好的首页就好了，先动起来，随手找到了一个[首页](https://gethomepage.dev/latest/installation/docker/)项目，先把各种连接汇总吧。经过考虑zfile和authentik也许可以发布出去，其他的服务暂时还是放到家庭内网里比较好，必要的时候可以通过蒲公英访问。
+终于来到了首页阶段，到目前为止，homelab的服务和连接已经非常多了，如果能有一个好的首页就好了，先动起来，随手找到了一个[首页](https://gethomepage.dev/latest/installation/docker/)项目，先把各种连接汇总吧。经过考虑zfile和authentik也许可以发布出去，其他的服务暂时还是放到家庭内网里比较好，必要的时候可以通过蒲公英访问。最终效果很好～可以非常方便的整理常用的访问链接了。
 
-## 未完待续
+## 小结
+
+随着第一天来到办公室，我也意识到假期结束了～买的很多书都没有看～不过我的homelab建设倒是很成功了。有个让我欣慰的点，我看到remix.run框架来到了2.7了，非常快的速度！感觉2.0还在昨天，新的开始加油～
