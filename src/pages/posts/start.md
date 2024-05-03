@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: '我的第一篇博客文章'
 pubDate: 2024-5-2
 description: '文章用于进行astro学习'
@@ -9,9 +10,7 @@ image:
 tags: ["astro", "blogging", "learning in public"]
 ---
 
-## 我的第一篇博客文章
-
- 发表于：2022-07-01
+## 说明
 
  欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。
 

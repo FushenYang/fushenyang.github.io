@@ -1,0 +1,15 @@
+---
+import Layout from "./Layout.astro";
+import "../pages/global.css"
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <main>
+    <h1>{frontmatter.title}</h1>
+    <p>作者： {frontmatter.author}</p>
+    <p>发表： {frontmatter.pubDate.toString().slice(0, 10)}</p>
+    <slot />
+  </main>
+</Layout>

@@ -1,0 +1,26 @@
+---
+// const platform = "github";
+// const username = "fushenyang";
+
+const { platform, username } = Astro.props;
+---
+
+<footer>
+  <p class="instructions">
+    相关链接 <a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+  </p>
+</footer>
+
+<style>
+  .instructions {
+    margin-bottom: 2rem;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    background: linear-gradient(
+      rgba(var(--accent-dark), 66%),
+      rgba(var(--accent-dark), 33%)
+    );
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: aliceblue;
+  }
+</style>
