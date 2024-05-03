@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from "astro";
 import BaseLayout from "../../layouts/Layout.astro";
-import "../global.css"
+import "../../styles/global.css"
 
 export async function getStaticPaths() {
   const allPosts:MarkdownInstance<Record<string, any>>[] = await Astro.glob('../posts/*.md');
