@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import "../styles/global.css"
+
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
   const blogEntries = await getCollection("books");
   return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.data.path },
     props: { entry },
   }));
 }
@@ -16,8 +16,6 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <main>
     <h1>{entry.data.title}</h1>
     <Content />
-  </main>
 </Layout>

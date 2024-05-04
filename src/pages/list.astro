@@ -1,17 +1,15 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
 import { getCollection } from 'astro:content';
-const allPosts = await Astro.glob("../pages/posts/*.md");
+
 const books = await getCollection('books');
 const pageTitle = "博客链接列表";
 ---
 
 
 <BaseLayout title={pageTitle}>
-  <p>在这里，我将分享我的学习 Astro 的之旅。</p>
-  <ul>
-{allPosts.map((post)=><li><a href={post.url}>{post.frontmatter.title}</a></li>)}
-  </ul>
+  <h1 class="text-2xl font-bold">本站所有文章列表</h1>
+
   ---------books---------<br />
   <ul>
     {books.map(book => <li><a href={"/" + book.slug}>{book.data.title}</a></li>)}

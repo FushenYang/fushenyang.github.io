@@ -1,21 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-//import Card from "../components/Card.astro";
-//import Navigation from "../components/Navigation.astro";
-import Greeting from '../components/Greeting';
-import "../styles/global.css"
 ---
 
 <Layout title="oldyang的博客">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">开始学习新的博客技术,争取快速迁移整个博客。</p>
-    <ul role="list" class="link-card-grid">
-      <li>
-        <a href="/posts/start">第一篇文章</a>
-      </li>
-    </ul>
-    <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-  </main>
+
+    <h1>欢迎访问 <span class="text-gradient">oldyang(老杨)</span>的博客</h1>
+    <p>
+      这个博客会记录我个人的一些开发笔记以及读书笔记,当然还有一些生活记录。
+    </p>
+
 </Layout>
 

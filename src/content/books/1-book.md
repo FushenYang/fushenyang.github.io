@@ -1,10 +1,10 @@
 ---
 title: '我的读书笔记'
-pubDate: 2024-5-3
+pubDate: '2024-5-3'
 description: '我的读书笔记测试'
 author: 'fushenyang'
-slug: reading-my-first-book
-tags: ["book", "blogging", "web-dev"]
+path: reading-my-first-book
+tags: ["book", "web-dev"]
 ---
 
 ## 这是一个读书笔记

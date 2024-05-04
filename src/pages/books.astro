@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const books = await getCollection("books");
+const pageTitle = "读书笔记列表";
+---
+
+<Layout title={pageTitle}>
+  <h1 class="text-2xl font-bold">所有读书笔记列表</h1>
+
+  <ul>
+    {
+      books.map((book) => (
+        <li>
+          <a href={"/" + book.slug}>{book.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

@@ -1,13 +1,14 @@
 ---
-import type { MarkdownInstance } from "astro";
+
 import BaseLayout from "../../layouts/Layout.astro";
-import "../../styles/global.css"
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const allPosts:MarkdownInstance<Record<string, any>>[] = await Astro.glob('../posts/*.md');
-  const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+  //const allPosts:MarkdownInstance<Record<string, any>>[] = await Astro.glob('../posts/*.md');
+  const allPosts = await getCollection("books");
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag));
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -17,12 +18,12 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag));
+const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag));
 ---
 
 <BaseLayout title={tag}>
   <p>包含「{tag}」标签的文章</p>
   <ul>
-    {filteredPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+    {filteredPosts.map((post) => <li><a href={"/" + post.data.path}>{post.data.title}</a></li>)}
   </ul>
 </BaseLayout>

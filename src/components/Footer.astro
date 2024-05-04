@@ -6,21 +6,17 @@ const { platform, username } = Astro.props;
 ---
 
 <footer>
-  <p class="instructions">
-    相关链接 <a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+  <p class="mt-5 text-lg">
+    相关链接：<a href={`https://www.${platform}.com/${username}`}>我的{platform}主页</a>|<a href="https://oldyang.site">前一版博客</a>
   </p>
 </footer>
 
 <style>
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(
-      rgba(var(--accent-dark), 66%),
-      rgba(var(--accent-dark), 33%)
-    );
-    padding: 1.5rem;
-    border-radius: 8px;
-    color: aliceblue;
+  footer p a {
+    @apply text-blue-500 mx-2 text-lg px-3;
+
+    &:hover {
+      @apply text-blue-800 underline underline-offset-4;
+    }
   }
 </style>
