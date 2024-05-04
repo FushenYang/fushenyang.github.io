@@ -14,7 +14,7 @@ const pageTitle = "博客链接列表";
   </ul>
   ---------books---------<br />
   <ul>
-    {books.map(book => <li><a href={book.slug}>{book.data.title}</a></li>)}
+    {books.map(book => <li><a href={"/" + book.slug}>{book.data.title}</a></li>)}
 
   </ul>
 </BaseLayout>

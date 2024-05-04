@@ -11,4 +11,4 @@ tags: ["book", "blogging", "web-dev"]
 
 这是我的读书笔记。
 
-![解体诸因，很棒的书](/books/1-book/front.jpg)
+![解体诸因，很棒的书](./1-book/front.jpg)
