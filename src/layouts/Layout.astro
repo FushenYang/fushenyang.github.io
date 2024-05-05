@@ -1,8 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
-// import Hamburger from "../components/Hamburger.astro";
+import Banner from "../components/Banner.astro";
 import Navigation from "../components/Navigation.astro";
-// import ThemeIcon from '../components/ThemeIcon.astro';
+
 
 interface Props {
   title: string;
@@ -23,6 +23,7 @@ const { title } = Astro.props;
   </head>
   <body>
   <main class="w-full mt-5 md:w-3/4 md:container mx-auto lg:w-1/2 border">
+    <Banner />
     <Navigation />
     <slot />
     <Footer platform="github" username="fushenyang" />
