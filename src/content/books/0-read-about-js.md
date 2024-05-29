@@ -1,5 +1,5 @@
 ---
-title: 阅读与js相关的书籍
+title: javascript阅读学习笔记
 description: ''
 pubDate: '2023-05-10 07:44:47'
 tags: ["book", "web-dev"]

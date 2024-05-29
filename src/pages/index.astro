@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Prose from "../components/Prose.astro";
+import ArticleImage from "../components/ArticleImage.astro";
 
 const books = await getCollection("books");
 const sortedBooks = books.sort((a, b) => {
@@ -24,7 +25,7 @@ const renderedBooks = await Promise.all(
       <div class="border w-full my-4 py-4 px-3">
         <div class="text-3xl font-bold underline mb-8">{book.data.title}</div>
         <Prose>
-          <book.Content />
+          <book.Content/>
         </Prose>
       </div>
     ))

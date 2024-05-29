@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Prose from "../components/Prose.astro";
+import ArticleImage from "../components/ArticleImage.astro";
 
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
@@ -16,6 +18,10 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-    <h1 class="text-2xl font-bold mb-3">{entry.data.title}</h1>
-    <Content />
+  <div class="border w-full my-4 py-4 px-3">
+    <h1 class="text-3xl font-bold mb-7">{entry.data.title}</h1>
+    <Prose>
+      <Content components={{ img: ArticleImage }} />
+    </Prose>
+  </div>
 </Layout>
