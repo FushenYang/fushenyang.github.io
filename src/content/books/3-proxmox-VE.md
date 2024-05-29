@@ -2,7 +2,7 @@
 title: 《Proxmox VE 超融合集群实践真传》读书笔记
 description: ''
 pubDate: '2023-11-30 08:20:45'
-tags: ["book", "dev"]
+tags: ["读书笔记", "运维"]
 path: pve-notes
 author: 'fushenyang'
 ---

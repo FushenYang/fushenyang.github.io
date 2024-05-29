@@ -2,7 +2,7 @@
 title: 《迷宫饭》读书笔记
 description: ''
 pubDate: '2024-02-18 21:43:38'
-tags: ["book", "dev"]
+tags: ["读书笔记", "漫画"]
 path: Delicious-in-Dungeon
 author: 'fushenyang'
 ---

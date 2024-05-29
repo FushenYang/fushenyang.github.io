@@ -2,7 +2,7 @@
 title: javascript阅读学习笔记
 description: ''
 pubDate: '2023-05-10 07:44:47'
-tags: ["book", "web-dev"]
+tags: ["读书笔记", "前端开发"]
 path: reading-js-book
 author: 'fushenyang'
 ---

@@ -6,15 +6,26 @@ const tags = [...new Set(allPosts.map((book) => book.data.tags).flat())];
 ---
 
 <Layout title="标签页面">
-  <h1>标签链接页面</h1>
+  <div class="border w-full my-4 py-4 px-3">
+    <div class="text-2xl font-bold mb-8">全部标签：</div>
+    <ul class="link-list space-y-2">
+      {
+        tags.map((tag) => (
+          <span class="mr-5">
+            <a
+              class="text-blue-500 hover:text-blue-700 underline transition duration-300 ease-in-out"
+              href={`/tags/${tag}`}
+            >
+              #{tag}
+            </a>
+          </span>
+        ))
+      }
+    </ul>
+  </div>
 
-  <div>
-    {
-      tags.map((tag) => (
-        <p>
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
+  <div class="border w-full my-4 py-4 px-3">
+    <div class="text-2xl font-bold mb-8">全部文章：</div>
+    <ul class="link-list space-y-2">todo</ul>
   </div>
 </Layout>

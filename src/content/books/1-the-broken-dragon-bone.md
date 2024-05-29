@@ -2,7 +2,7 @@
 title: 《折断的龙骨》读书笔记
 description: ''
 pubDate: '2023-11-17 16:31:21'
-tags: ["book", "web-dev"]
+tags: ["读书笔记", "推理小说"]
 path: broken-keel
 author: 'fushenyang'
 ---
@@ -44,4 +44,3 @@ author: 'fushenyang'
 ## 尾声
 
 个人其实并不太喜欢这部作品，看完之后，我又想起了《连峰之间是否放晴》，还是更加喜欢这类能引起我共鸣的作品。
-
