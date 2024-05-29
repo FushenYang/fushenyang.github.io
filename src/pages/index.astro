@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Prose from "../components/Prose.astro";
 
-const books = await getCollection('books');
+const books = await getCollection("books");
 const sortedBooks = books.sort((a, b) => {
   const dateA = new Date(a.data.pubDate).getTime();
   const dateB = new Date(b.data.pubDate).getTime();
@@ -15,16 +16,17 @@ const renderedBooks = await Promise.all(
     return { ...book, Content };
   })
 );
-
 ---
 
 <Layout title="oldyang的博客首页">
-  {renderedBooks.map((book) => (
-
-      <span class="text-2xl mb-4">{book.data.title}</span>
-      <div>
-        <book.Content />
+  {
+    renderedBooks.map((book) => (
+      <div class="border w-full my-4 py-4 px-3">
+        <div class="text-3xl font-bold underline mb-8">{book.data.title}</div>
+        <Prose>
+          <book.Content />
+        </Prose>
       </div>
-
-  ))}
+    ))
+  }
 </Layout>
