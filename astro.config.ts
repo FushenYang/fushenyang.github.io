@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.cathome.eu.org",
+  site: "https://oldyang.site",
   integrations: [preact(), astroImageTools, tailwind()],
   markdown: {
     shikiConfig: {
