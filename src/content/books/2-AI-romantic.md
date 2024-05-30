@@ -1,7 +1,10 @@
 ---
-title: 把浪漫的图灵实验变得更加浪漫-由《侦探AI》阅读想到的随笔
-date: 2020-10-08 08:02:54
-tags:
+title: 《侦探AI》把浪漫的图灵实验变得更加浪漫
+description: ''
+pubDate: '2020-10-08 08:02:54'
+tags: ["BookNotes", "MysteryNovels"]
+path: AI-romantic
+author: 'fushenyang'
 ---
 
 ## 前言
