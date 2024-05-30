@@ -1,8 +1,2 @@
 {
-    "frontMatter.content.pageFolders": [
-        {
-            "title": "books",
-            "path": "[[workspace]]/src/content/books"
-        }
-    ]
 }

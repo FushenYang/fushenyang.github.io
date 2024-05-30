@@ -5,8 +5,12 @@
   "frontMatter.content.publicFolder": "public",
   "frontMatter.content.pageFolders": [
     {
-      "title": "blog",
-      "path": "[[workspace]]/src/content/blog"
+      "title": "books",
+      "path": "[[workspace]]/src/content/books"
+    },
+    {
+      "title": "devs",
+      "path": "[[workspace]]/src/content/devs"
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
@@ -36,10 +40,24 @@
           "isPublishDate": true
         },
         {
-          "title": "Content preview",
-          "name": "heroImage",
-          "type": "image",
-          "isPreviewImage": true
+          "title": "tags",
+          "name": "tags",
+          "type": "tags",
+          "default": ""
+        }
+        ,
+        {
+          "title": "path",
+          "name": "path",
+          "type": "string",
+          "default": ""
+        }
+        ,
+        {
+          "title": "author",
+          "name": "author",
+          "type": "string",
+          "default": "Fushen YANG"
         }
       ]
     }
