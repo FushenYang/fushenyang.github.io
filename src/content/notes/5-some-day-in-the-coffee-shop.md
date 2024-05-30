@@ -1,7 +1,10 @@
 ---
 title: 某天在咖啡厅
-date: 2023-04-02 08:56:48
-tags:
+description: ''
+pubDate: '2023-04-02 08:56:48'
+tags: ["Life"]
+path: some-day-in-the-coffee-shop
+author: 'Fushen YANG'
 ---
 
 ## 在一个咖啡厅重启了博客

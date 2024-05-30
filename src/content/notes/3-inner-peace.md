@@ -1,7 +1,10 @@
 ---
 title: 心境转变了一次记录
-date: 2022-09-23 17:33:26
-tags:
+description: ''
+pubDate: '2022-09-23 17:33:26'
+tags: ["Life"]
+path: inner-peace
+author: 'Fushen YANG'
 ---
 
 ## 心境变化的起因

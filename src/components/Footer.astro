@@ -1,8 +1,5 @@
 ---
-// const platform = "github";
-// const username = "fushenyang";
 
-const { platform, username } = Astro.props;
 ---
 
 <footer class=" mb-12">
@@ -12,16 +9,16 @@ const { platform, username } = Astro.props;
     <span class="h-px flex-1 bg-black"></span>
   </span>
   <p class="mt-5 text-lg">
-    相关链接：<a target="_blank" href={`https://www.${platform}.com/${username}`}>{platform}主页</a>
-    |<a target="_blank" href="https://history.oldyang.site">前一版本博客</a>
-    |<a target="_blank" href="https://yangfs.blogspot.com">更早版本</a>
+    相关链接：<a target="_blank" href={`https://www.github.com/fushenyang`}>github</a>
+    |<a target="_blank" href="https://history.oldyang.site">history</a>
+    |<a target="_blank" href="https://yangfs.blogspot.com">blogspot</a>
     |<a target="_blank" href="https://www.hyperui.dev">HyperUI</a>
   </p>
 </footer>
 
 <style>
   footer p a {
-    @apply text-blue-500 mx-2 text-lg px-3;
+    @apply text-blue-500 mx-1 text-lg px-1;
 
     &:hover {
       @apply text-blue-800 underline underline-offset-4;

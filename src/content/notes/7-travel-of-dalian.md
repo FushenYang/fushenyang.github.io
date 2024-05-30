@@ -1,7 +1,10 @@
 ---
-title: 旅行游记
-date: 2023-09-30 16:48:35
-tags:
+title: 大连旅行记
+description: ''
+pubDate: '2023-09-30 16:48:35'
+tags: ["Life","Travel"]
+path: travel-of-dalian
+author: 'Fushen YANG'
 ---
 去了大连。
 

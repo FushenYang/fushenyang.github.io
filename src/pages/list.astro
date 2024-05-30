@@ -2,52 +2,24 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { sortByPubDate } from "../lib/posts";
+import PostLinks from "../components/PostLinks.astro";
 
-const books = await getCollection("books");
-const sortedBooks = sortByPubDate(books);
+const books = sortByPubDate(await getCollection("books"));
 
 const devs = await getCollection("devs");
 const sortedDevs = sortByPubDate(devs);
 
+const notes = await getCollection("notes");
+const sortedNotes = sortByPubDate(notes);
 const pageTitle = "博客文章目录";
+
+
 ---
 
 <Layout title={pageTitle}>
-  <div class="border w-full my-4 py-4 px-3">
-    <div class="text-2xl font-bold mb-8">所有读书笔记链接如下：</div>
-    <ul class="link-list space-y-2">
-      {
-        sortedBooks.map((book) => (
-          <li class="list-item">
-            [{book.data.pubDate.split(" ")[0]}]
-            <a
-              class="text-blue-500 hover:text-blue-700 underline transition duration-300 ease-in-out"
-              href={"/" + book.data.path}
-            >
-              {book.data.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
 
-  <div class="border w-full my-4 py-4 px-3">
-    <div class="text-2xl font-bold mb-8">所有开发笔记链接如下：</div>
-    <ul class="link-list space-y-2">
-      {
-        sortedDevs.map((post) => (
-          <li class="list-item">
-            [{post.data.pubDate.split(" ")[0]}]
-            <a
-              class="text-blue-500 hover:text-blue-700 underline transition duration-300 ease-in-out"
-              href={"/" + post.data.path}
-            >
-              {post.data.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <PostLinks title="读书笔记" posts={books}></PostLinks>
+  <PostLinks title="开发笔记" posts={sortedDevs}></PostLinks>
+  <PostLinks title="随笔文章" posts={sortedNotes}></PostLinks>
+
 </Layout>

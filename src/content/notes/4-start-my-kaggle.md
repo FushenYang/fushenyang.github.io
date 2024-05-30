@@ -1,7 +1,10 @@
 ---
 title: 开始了我的kaggle学习
-date: 2022-04-15 22:26:11
-tags: 旧博客
+description: ''
+pubDate: '2022-04-15 22:26:11'
+tags: ["Programming","Tutorials"]
+path: kaggle
+author: 'Fushen YANG'
 ---
 
 ## 学习的背景

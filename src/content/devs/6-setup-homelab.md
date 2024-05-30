@@ -3,7 +3,7 @@
 title: 随着假期开始的充电——搭建自己的homelab
 description: ''
 pubDate: '2024-01-13 18:10:02'
-tags: ["homelab","Tutorials"]
+tags: ["HomeLab","Tutorials"]
 path: setup-homelab
 author: 'Fushen YANG'
 ---

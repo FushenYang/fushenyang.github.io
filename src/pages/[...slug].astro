@@ -3,13 +3,13 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Prose from "../components/Prose.astro";
 import ArticleImage from "../components/ArticleImage.astro";
+import { getAll } from "../lib/posts";
 
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
-  const booksCollection = await getCollection("books");
-  const devsCollection = await getCollection("devs");
 
-  const allPosts = [...booksCollection, ...devsCollection];
+
+  const allPosts = await getAll();
   return allPosts.map((entry) => ({
     params: { slug: entry.data.path },
     props: { entry },
