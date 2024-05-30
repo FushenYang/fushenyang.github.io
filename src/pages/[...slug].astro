@@ -6,8 +6,11 @@ import ArticleImage from "../components/ArticleImage.astro";
 
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("books");
-  return blogEntries.map((entry) => ({
+  const booksCollection = await getCollection("books");
+  const devsCollection = await getCollection("devs");
+
+  const allPosts = [...booksCollection, ...devsCollection];
+  return allPosts.map((entry) => ({
     params: { slug: entry.data.path },
     props: { entry },
   }));

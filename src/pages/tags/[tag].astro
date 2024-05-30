@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { getAll, sortByPubDate } from "../../lib/posts";
 
 export async function getStaticPaths() {
-  //const allPosts:MarkdownInstance<Record<string, any>>[] = await Astro.glob('../posts/*.md');
-  const allPosts = await getCollection("books");
+
+
+  const allPosts = sortByPubDate(await getAll());
   const uniqueTags = [
     ...new Set(allPosts.map((post) => post.data.tags).flat()),
   ];

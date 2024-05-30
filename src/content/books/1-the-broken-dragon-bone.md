@@ -2,7 +2,7 @@
 title: 《折断的龙骨》读书笔记
 description: ''
 pubDate: '2023-11-17 16:31:21'
-tags: ["读书笔记", "推理小说"]
+tags: ["BookNotes", "MysteryNovels"]
 path: broken-keel
 author: 'fushenyang'
 ---

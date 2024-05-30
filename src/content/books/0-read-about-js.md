@@ -1,8 +1,8 @@
 ---
-title: javascript阅读学习笔记
+title: 《编写可靠的JavaScript代码》读书笔记
 description: ''
 pubDate: '2023-05-10 07:44:47'
-tags: ["读书笔记", "前端开发"]
+tags: ["BookNotes", "FrontendDevelopment"]
 path: reading-js-book
 author: 'fushenyang'
 ---

@@ -1,7 +1,10 @@
 ---
 title: 在ubuntu上部署一个php网站
-date: 2023-11-09 11:38:49
-tags: 教程
+description: ''
+pubDate: '2023-11-09 11:38:49'
+tags: ["DevelopmentNotes"]
+path: how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu
+author: 'Fushen YANG'
 ---
 
 ## 前言

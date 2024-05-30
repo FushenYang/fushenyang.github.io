@@ -10,12 +10,19 @@ const schema = z.object({
   path: z.string()
 })
 // 3. 定义集合
-const bookCollection = defineCollection({
+const books = defineCollection({
+  type: "content", // v2.5.0 及之后
+  schema: schema,
+});
+
+
+const devs = defineCollection({
   type: "content", // v2.5.0 及之后
   schema: schema,
 });
 // 3. 导出一个 `collections` 对象来注册集合
 //    这个键应该与 `src/content` 中的集合目录名匹配
 export const collections = {
-  books: bookCollection,
+  books,
+  devs,
 };

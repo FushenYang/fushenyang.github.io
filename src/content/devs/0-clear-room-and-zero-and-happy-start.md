@@ -1,7 +1,10 @@
 ---
 title: 打扫房间与第零篇文章以及开心
-date: 2023-04-22 21:23:10
-tags: 生活
+description: ''
+pubDate: '2023-04-22 21:23:10'
+tags: ["Life"]
+path: clear-room-and-zero-and-happy-start
+author: 'fushenyang'
 ---
 
 ## 游戏还是很好玩的，不过要节制

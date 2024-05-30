@@ -1,7 +1,10 @@
 ---
 title: 建立一个全球可用的高速文件共享方案:开始就是曲折探索路径
-date: 2023-05-24 08:25:52
-tags:
+description: ''
+pubDate: '2023-05-24 08:25:52'
+tags: ["DevelopmentNotes"]
+path: Building-a-Global-High-Speed-File-Sharing-System-Insights-and-Best-Practices
+author: 'Fushen YANG'
 ---
 ## 背景情况
 

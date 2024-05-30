@@ -3,29 +3,25 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Prose from "../components/Prose.astro";
 import ArticleImage from "../components/ArticleImage.astro";
+import { getAll, sortByPubDate } from "../lib/posts";
 
-const books = await getCollection("books");
-const sortedBooks = books.sort((a, b) => {
-  const dateA = new Date(a.data.pubDate).getTime();
-  const dateB = new Date(b.data.pubDate).getTime();
-  return dateB - dateA;
-});
-const latestBooks = sortedBooks.slice(0, 3);
-const renderedBooks = await Promise.all(
-  latestBooks.map(async (book) => {
-    const { Content } = await book.render();
-    return { ...book, Content };
+const posts = sortByPubDate(await getAll()) ;
+const latestPosts = posts.slice(0, 5);
+const renderedPosts = await Promise.all(
+latestPosts.map(async (post) => {
+    const { Content } = await post.render();
+    return { ...post, Content };
   })
 );
 ---
 
 <Layout title="oldyang的博客首页">
   {
-    renderedBooks.map((book) => (
+    renderedPosts.map((post) => (
       <div class="border w-full my-4 py-4 px-3">
-        <div class="text-3xl font-bold underline mb-8">{book.data.title}</div>
+        <div class="text-3xl font-bold underline mb-8">{post.data.title}</div>
         <Prose>
-          <book.Content/>
+          <post.Content/>
         </Prose>
       </div>
     ))

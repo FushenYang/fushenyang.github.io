@@ -3,7 +3,7 @@
 title: 《数理逻辑--证明及其限度》读书笔记
 description: ''
 pubDate: '2023-11-17 16:54:59'
-tags: ["读书笔记", "数学"]
+tags: ["BookNotes", "Mathematics"]
 path: mathematical-logic-reading-notes
 author: 'fushenyang'
 ---
