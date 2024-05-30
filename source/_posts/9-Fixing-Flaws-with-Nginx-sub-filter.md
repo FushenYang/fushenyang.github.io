@@ -4,7 +4,7 @@ date: 2024-04-20 21:54:28
 tags:
 ---
 
-# 本网站不会再更新，请访问[新地址](https://blog.cathome.eu.org)
+# 本网站不会再更新，请访问[新地址](https://oldyang.site)
 
 ## 前言
 
