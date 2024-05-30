@@ -20,6 +20,7 @@ latestPosts.map(async (post) => {
     renderedPosts.map((post) => (
       <div class="border w-full my-4 py-4 px-3">
         <div class="text-3xl font-bold underline mb-8">{post.data.title}</div>
+        <p class="text-sm text-gray-500 mb-4">Published on: {post.data.pubDate.split(' ')[0]}</p>
         <Prose>
           <post.Content/>
         </Prose>

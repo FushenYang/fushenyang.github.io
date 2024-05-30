@@ -23,6 +23,7 @@ const { Content } = await entry.render();
 <Layout title={entry.data.title}>
   <div class="border w-full my-4 py-4 px-3">
     <h1 class="text-3xl font-bold mb-7">{entry.data.title}</h1>
+    <p class="text-sm text-gray-500 mb-4">Published on: {entry.data.pubDate.split(' ')[0]}</p>
     <Prose>
       <Content components={{ img: ArticleImage }} />
     </Prose>
