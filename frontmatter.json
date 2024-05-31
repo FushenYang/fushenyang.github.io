@@ -12,12 +12,17 @@
       "title": "devs",
       "path": "[[workspace]]/src/content/devs"
     }
+    ,
+    {
+      "title": "notes",
+      "path": "[[workspace]]/src/content/notes"
+    }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
       "pageBundle": false,
-      "previewPath": "'blog'",
+      "previewPath": "",
       "filePrefix": null,
       "clearEmpty": true,
       "fields": [
@@ -43,7 +48,7 @@
           "title": "tags",
           "name": "tags",
           "type": "tags",
-          "default": ""
+          "default": [""]
         }
         ,
         {

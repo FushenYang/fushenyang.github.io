@@ -141,6 +141,8 @@ sudo docker load < oo7.tar #导入镜像
 然后就是部署php环境的阶段，虽然按照正常流程是php、mysql、nginx这样依次安装，但是这样效率太低了，这里还是推荐用docker安装。使用[docker-lnmp](https://github.com/ogenes/docker-lnmp)项目来进行php网站的配置，部署和后续迁移都会方便。
 
 如果以dzzoffice项目的安装为例子，把源代码放到默认的www目录中，目录结构如下：
+
+``` bash
 |____docker-lnmp
 | |____nginx
 | |____php74
@@ -162,6 +164,7 @@ sudo docker load < oo7.tar #导入镜像
 | |____core
 | |____data
 | |____admin
+```
 
 ``` bash
 find . -name "._*" -print ## 检查缓存文件
