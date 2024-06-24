@@ -2,7 +2,7 @@
 title: LVM磁盘扩容
 pubDate: "2024-06-24 00:23:36"
 tags:
-  - ""
+  - "lvm"
 path: ""
 author: Fushen YANG
 type: default
