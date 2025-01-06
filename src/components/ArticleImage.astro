@@ -14,9 +14,9 @@ const { src, alt } = Astro.props;
 <p>
   {
     typeof src === "string" ? (
-      <img src={src} alt={alt} />
+      <img src={src} alt={alt} /><p>hehe</p>
     ) : (
-      <Image {src} {alt} />
+      <Image {src} {alt} /><p>lalala</p>
     )
   }
   {alt && <p class="text-center">{alt}</p>}
