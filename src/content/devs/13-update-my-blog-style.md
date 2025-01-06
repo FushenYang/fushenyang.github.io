@@ -1,9 +1,9 @@
 ---
-title: 更新我的
+title: 更新我的博客排版
 pubDate: "2025-01-06 15:23:36"
 tags:
-  - ""
-path: ""
+  - "blog"
+path: "update-my-blog-style"
 author: Fushen YANG
 ---
 
@@ -16,3 +16,5 @@ author: Fushen YANG
 果然好看的格式让我更想更新文章了。
 
 2025年第一篇文章，一个全新的开始至少一点点的把这个博客完善好吧～
+
+下一步的计划就是把图片搞定！
