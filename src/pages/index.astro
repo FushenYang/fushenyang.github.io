@@ -14,13 +14,21 @@ latestPosts.map(async (post) => {
   })
 );
 ---
+<style>
+a {
+  @apply text-blue-500 text-3xl px-0;
+}
 
+a:hover {
+  @apply text-blue-800 text-3xl px-0 underline underline-offset-4;
+}
+</style>
 <Layout title="oldyang的博客首页">
   {
     renderedPosts.map((post) => (
       <div class="border w-full my-4 py-4 px-3">
-        <div class="text-3xl font-bold underline mb-8"><a href={"/" + post.data.path} >{post.data.title}</a></div>
-        <p class="text-sm text-gray-500 mb-4">Published on: {post.data.pubDate.split(' ')[0]}</p>
+        <div class="text-3xl font-bold mb-1"><a href={"/" + post.data.path} >{post.data.title}</a></div>
+        <p class="text-sm text-gray-500 mb-4">发表日期为: {post.data.pubDate.split(' ')[0]}</p>
         <Prose>
           <post.Content/>
         </Prose>
