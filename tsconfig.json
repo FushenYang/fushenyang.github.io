@@ -5,5 +5,5 @@
     "jsxImportSource": "preact"
   },
   "exclude": ["dist"],
-  "include": ["src"]
+  "include": ["src", "content"]
 }
