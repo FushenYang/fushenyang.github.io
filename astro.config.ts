@@ -46,7 +46,7 @@ export default defineConfig({
     shikiConfig: {
       // 选择 Shiki 内置的主题（或添加你自己的主题）
       // https://shiki.style/themes
-      theme: 'dracula',
+      theme: 'andromeeda',
       // 另外，也提供了多种主题
       // 查看下面关于使用亮/暗双主题的的说明
       themes: {
