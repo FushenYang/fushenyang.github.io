@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Prose from "../components/Prose.astro";
 import ArticleImage from "../components/ArticleImage.astro";
 import { getAll } from "../lib/posts";
+import DateFormatter from "../components/DateFormatter.astro";
 
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
@@ -21,7 +22,7 @@ const { Content } = await entry.render();
 <Layout title={entry.data.title}>
   <div class="border w-full my-4 py-4 px-3">
     <h1 class="text-3xl font-bold mb-1">{entry.data.title}</h1>
-    <p class="text-sm text-gray-500 mb-4">发表日期为: {new Date(entry.data.pubDate).toLocaleDateString()}</p>
+    <p class="text-sm text-gray-500 mb-4">发表日期为: <DateFormatter date={entry.data.pubDate} /></p>
     <Prose>
       <Content components={{ img: ArticleImage }} />
     </Prose>
