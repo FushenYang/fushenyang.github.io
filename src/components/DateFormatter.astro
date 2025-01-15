@@ -1,0 +1,12 @@
+---
+export interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+
+// 格式化日期为“年-月-日”格式
+const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+---
+
+<span>{formattedDate}</span>

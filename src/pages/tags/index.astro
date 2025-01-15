@@ -1,4 +1,5 @@
 ---
+import DateFormatter from "../../components/DateFormatter.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getAll, sortByPubDate } from "../../lib/posts";
 
@@ -31,7 +32,7 @@ const tags = [...new Set(allPosts.map((book) => book.data.tags).flat())];
     <ul class="link-list space-y-2">
       {
         allPosts.map((post) => (
-          <li class="list-item">[{new Date(post.data.pubDate).toLocaleDateString()}]
+          <li class="list-item">[<DateFormatter date={post.data.pubDate} />]
             <a
               class="text-blue-500 hover:text-blue-700 underline transition duration-300 ease-in-out"
               href={"/" + post.data.path}
