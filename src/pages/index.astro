@@ -4,34 +4,39 @@ import Layout from "../layouts/Layout.astro";
 import Prose from "../components/Prose.astro";
 
 import { getAll, sortByPubDate } from "../lib/posts";
+import { extractSummary } from "../lib/extractSummary";
 
 const posts = sortByPubDate(await getAll()) ;
 const latestPosts = posts.slice(0, 5);
 const renderedPosts = await Promise.all(
 latestPosts.map(async (post) => {
     const { Content } = await post.render();
-    return { ...post, Content };
+    const summary = await extractSummary(post.body);
+    return { ...post, Content, summary };
   })
 );
 ---
 <style>
 a {
-  @apply text-blue-500 text-3xl px-0;
+  @apply text-blue-500 text-base px-0;
 }
 
 a:hover {
-  @apply text-blue-800 text-3xl px-0 underline underline-offset-4;
+  @apply text-blue-800 text-lg px-0 underline underline-offset-4;
 }
 </style>
 <Layout title="oldyang的博客首页">
   {
     renderedPosts.map((post) => (
       <div class="border w-full my-4 py-4 px-3">
-        <div class="text-3xl font-bold mb-1"><a href={"/" + post.data.path} >{post.data.title}</a></div>
+        <div class="text-xl font-bold mb-1">{post.data.title}</div>
         <p class="text-sm text-gray-500 mb-4">发表日期为: {post.data.pubDate.split(' ')[0]}</p>
-        <Prose>
+        <div>{post.summary} ……</div>
+        <a href={"/" + post.data.path}> 阅读全文 </a>
+
+        {/* <Prose>
           <post.Content/>
-        </Prose>
+        </Prose> */}
       </div>
     ))
   }
