@@ -1,7 +1,7 @@
 ---
 title: 《空之境界》观后感
 description: 对《空之境界》系列动画的观后感和分析。
-pubDate: '2024-10-01 10:00:00'
+pubDate: 2024-10-01T10:00:00
 tags: ["AnimeReview", "空之境界"]
 path: knk-review
 author: 'fushenyang'

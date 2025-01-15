@@ -1,6 +1,6 @@
 ---
 title: 更新我的博客排版
-pubDate: "2025-01-06 15:23:36"
+pubDate: 2025-01-06T15:23:36
 tags:
   - "blog"
 path: "update-my-blog-style"

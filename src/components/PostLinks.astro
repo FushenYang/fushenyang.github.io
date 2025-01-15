@@ -8,7 +8,7 @@ const { posts, title } = Astro.props;
     {
       posts.map((post: { data: { pubDate: string; path: string; title: unknown; }; }) => (
         <li class="list-item">
-          [{post.data.pubDate.split(" ")[0]}]
+          [{new Date(post.data.pubDate).toLocaleDateString()}]
           <a
             class="text-blue-500 hover:text-blue-700 underline transition duration-300 ease-in-out"
             href={"/" + post.data.path}

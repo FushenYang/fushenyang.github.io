@@ -1,7 +1,7 @@
 ---
 title: 我的typescript学习笔记
 description: ''
-pubDate: '2022-10-13 15:08:34'
+pubDate: 2022-10-13T15:08:34
 tags: ["Programming","Tutorials"]
 path: learn-typescript
 author: 'Fushen YANG'

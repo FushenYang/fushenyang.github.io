@@ -1,7 +1,7 @@
 ---
 title: 开始了我的kaggle学习
 description: ''
-pubDate: '2022-04-15 22:26:11'
+pubDate: 2022-04-15T22:26:11
 tags: ["Programming","Tutorials"]
 path: kaggle
 author: 'Fushen YANG'

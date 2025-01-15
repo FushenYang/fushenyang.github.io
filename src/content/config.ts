@@ -4,7 +4,7 @@ import { z, defineCollection } from "astro:content";
 
 const schema = z.object({
   title: z.string(),
-  pubDate: z.string(),
+  pubDate: z.date(),
   author:z.string(),
   tags: z.array(z.string()),
   path: z.string()

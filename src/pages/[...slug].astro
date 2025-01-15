@@ -7,8 +7,6 @@ import { getAll } from "../lib/posts";
 
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
-
-
   const allPosts = await getAll();
   return allPosts.map((entry) => ({
     params: { slug: entry.data.path },
@@ -23,7 +21,7 @@ const { Content } = await entry.render();
 <Layout title={entry.data.title}>
   <div class="border w-full my-4 py-4 px-3">
     <h1 class="text-3xl font-bold mb-1">{entry.data.title}</h1>
-    <p class="text-sm text-gray-500 mb-4">发表日期为: {entry.data.pubDate.split(' ')[0]}</p>
+    <p class="text-sm text-gray-500 mb-4">发表日期为: {new Date(entry.data.pubDate).toLocaleDateString()}</p>
     <Prose>
       <Content components={{ img: ArticleImage }} />
     </Prose>

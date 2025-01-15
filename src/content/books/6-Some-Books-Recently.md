@@ -1,7 +1,7 @@
 ---
 title: 最近看的很多书，列个书单记录一下
 description: ''
-pubDate: '2024-9-30 21:43:38'
+pubDate: 2024-9-30T21:43:38
 tags: ["BookNotes", "Comics"]
 path: recent-books-reading-list
 author: 'fushenyang'

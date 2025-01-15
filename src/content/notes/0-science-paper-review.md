@@ -2,7 +2,7 @@
 
 title: 科研文献审稿经验心得分享
 description: ''
-pubDate: '2015-12-08 21:02:02'
+pubDate: 2015-12-08T21:02:02+08:00
 tags: ["Scienco","Tutorials"]
 path: science-paper-review
 author: 'Fushen YANG'

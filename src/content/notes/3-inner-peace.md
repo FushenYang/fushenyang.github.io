@@ -1,7 +1,7 @@
 ---
 title: 心境转变了一次记录
 description: ''
-pubDate: '2022-09-23 17:33:26'
+pubDate: 2022-09-23T17:33:26
 tags: ["Life"]
 path: inner-peace
 author: 'Fushen YANG'

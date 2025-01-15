@@ -30,7 +30,7 @@ a:hover {
     renderedPosts.map((post) => (
       <div class="border w-full my-4 py-4 px-3">
         <div class="text-xl font-bold mb-1">{post.data.title}</div>
-        <p class="text-sm text-gray-500 mb-4">发表日期为: {post.data.pubDate.split(' ')[0]}</p>
+        <p class="text-sm text-gray-500 mb-4">发表日期为: {new Date(post.data.pubDate).toLocaleDateString()}</p>
         <div>{post.summary} ……</div>
         <a href={"/" + post.data.path}> 阅读全文 </a>
 

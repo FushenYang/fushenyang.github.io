@@ -1,8 +1,7 @@
 ---
-
 title:  FTP文件扫描脚本
 description: ''
-pubDate: '2023-06-05 15:03:57'
+pubDate: 2023-06-05T15:03:57
 tags: ["DevelopmentNotes"]
 path: find-how-many-files-on-ftp-server-with-script
 author: 'Fushen YANG'

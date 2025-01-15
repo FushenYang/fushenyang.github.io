@@ -1,6 +1,6 @@
 ---
 title: 基于cloudflare平台开发一个RAG小应用
-pubDate: "2024-06-05 02:38:13"
+pubDate: 2024-06-05T02:38:13
 tags:
   - "AI"
 path: "rag-demo-application-using-cloudflare"

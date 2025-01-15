@@ -1,7 +1,7 @@
 ---
 title: 部署一个支持小组开展工作的jupyter环境
 description: ''
-pubDate: '2023-11-10 10:19:16'
+pubDate: 2023-11-10T10:19:16
 tags: ["Tutorials"]
 path: jupyterhub-for-team-work
 author: 'Fushen YANG'
