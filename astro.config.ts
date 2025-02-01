@@ -5,21 +5,6 @@ import preact from "@astrojs/preact";
 import tailwind from "@astrojs/tailwind";
 import remarkFigureCaption from '@microflash/remark-figure-caption';
 
-export function customMarkup({ src, sources, width, height, alt }) {
-  return `
-  <picture>
-  ${sources}
-  <img
-    src="${src}"
-    width="${width}"
-    height="${height}"
-    alt="none"
-    loading="lazy"
-    decoding="async">
-   </picture>
-   `;
-}
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://oldyang.site",
@@ -27,7 +12,6 @@ export default defineConfig({
     sizes: "(max-width: 700px) 100vw, 700px",
     remoteImages: false,
     altRequired: true,
-    customMarkup: customMarkup,
     eleventyImageConfig: {
       formats: ['auto'],
       widths: ['auto', 600, 1000, 1400],
