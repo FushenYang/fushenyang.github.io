@@ -3,7 +3,7 @@ title: 《虚拟化KVM极速入门》读书笔记
 description: ''
 pubDate: 2023-12-05T10:10:47
 tags: ["BookNotes", "Operations"]
-path: kvm-notes
+slug: kvm-notes
 author: 'fushenyang'
 ---
 

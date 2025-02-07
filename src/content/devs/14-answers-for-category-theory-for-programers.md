@@ -2,10 +2,10 @@
 title: 《面向程序员的范畴论》课后习题参考
 pubDate: 2025-02-07T02:30:16.122Z
 tags:
-  - "fp"
-  - "haskell"
-  - "Category Theory"
-path: Category-Theory-for-Programers-Homework-Answers-cn
+  - fp
+  - haskell
+  - Category Theory
+slug: Category-Theory-for-Programers-Homework-Answers-cn
 author: Fushen YANG
 ---
 

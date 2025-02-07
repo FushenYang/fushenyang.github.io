@@ -10,7 +10,7 @@ import DateFormatter from "../components/DateFormatter.astro";
 export async function getStaticPaths() {
   const allPosts = await getAll();
   return allPosts.map((entry) => ({
-    params: { slug: entry.data.path },
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }

@@ -35,7 +35,7 @@ const tags = [...new Set(allPosts.map((book) => book.data.tags).flat())];
           <li class="list-item">[<DateFormatter date={post.data.pubDate} />]
             <a
               class="text-blue-500 hover:text-blue-700 underline transition duration-300 ease-in-out"
-              href={"/" + post.data.path}
+              href={"/" + post.slug}
             >
               {post.data.title}
             </a>

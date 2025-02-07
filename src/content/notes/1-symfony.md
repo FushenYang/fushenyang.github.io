@@ -3,7 +3,7 @@ title: symfony的学习笔记
 description: ''
 pubDate: 2020-07-02T08:08:43
 tags: ["Programming","Tutorials"]
-path: symfony
+slug: symfony
 author: 'Fushen YANG'
 ---
 

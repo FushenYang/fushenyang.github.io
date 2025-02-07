@@ -3,7 +3,7 @@ title: 在ubuntu上部署一个php网站
 description: ''
 pubDate: 2023-11-09T11:38:49
 tags: ["DevelopmentNotes"]
-path: how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu
+slug: how-to-setup-up-a-php-website-with-mysql-on-a-new-ubuntu
 author: 'Fushen YANG'
 ---
 

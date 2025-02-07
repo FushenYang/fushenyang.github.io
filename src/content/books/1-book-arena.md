@@ -5,7 +5,7 @@ title: 《推理竞技场》如果更早遇见是不是会好一点呢？
 description: ''
 pubDate: 2022-04-15T18:22:31
 tags: ["BookNotes", "MysteryNovels"]
-path: tuili-arena
+slug: tuili-arena
 author: 'fushenyang'
 ---
 

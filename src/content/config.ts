@@ -6,8 +6,7 @@ const schema = z.object({
   title: z.string(),
   pubDate: z.date(),
   author:z.string(),
-  tags: z.array(z.string()),
-  path: z.string()
+  tags: z.array(z.string())
 })
 
 export type Post = z.infer<typeof schema>;

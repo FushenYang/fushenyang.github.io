@@ -3,7 +3,7 @@ title: 开始我的AI项目
 description: ''
 pubDate: 2023-04-12T09:32:00
 tags: ["Programming"]
-path: start-my-AI-side-project-with-cf
+slug: start-my-AI-side-project-with-cf
 author: 'Fushen YANG'
 ---
 ## 准备开始我的AI项目了

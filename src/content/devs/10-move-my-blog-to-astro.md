@@ -2,7 +2,7 @@
 title: 更新我的博客到Astro
 pubDate: 2024-05-31T08:38:41
 tags: ["FrontendDevelopment"]
-path: "move-my-blog-to-astro"
+slug: "move-my-blog-to-astro"
 author: Fushen YANG
 type: default
 ---

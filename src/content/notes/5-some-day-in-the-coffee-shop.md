@@ -3,7 +3,7 @@ title: 某天在咖啡厅
 description: ''
 pubDate: 2023-04-02T08:56:48
 tags: ["Life"]
-path: some-day-in-the-coffee-shop
+slug: some-day-in-the-coffee-shop
 author: 'Fushen YANG'
 ---
 

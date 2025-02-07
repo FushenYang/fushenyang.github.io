@@ -3,7 +3,7 @@ title: "最近看了三本书"
 pubDate: 2025-01-31T00:47:15.622Z
 tags:
   - "book"
-path: "3-Books-Reviewed-The-Good-and-the-Bad"
+slug: "3-Books-Reviewed-The-Good-and-the-Bad"
 author: Fushen YANG
 ---
 

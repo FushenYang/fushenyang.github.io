@@ -3,7 +3,7 @@ title: LVM磁盘扩容
 pubDate: 2024-06-24T00:23:36
 tags:
   - "lvm"
-path: "how-to-expand-disk-space-lvm"
+slug: "how-to-expand-disk-space-lvm"
 author: Fushen YANG
 type: default
 ---

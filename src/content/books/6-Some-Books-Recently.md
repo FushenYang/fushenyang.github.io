@@ -3,7 +3,7 @@ title: 2024年看了非常多的推理小说，真是充实的一年
 description: ''
 pubDate: 2024-9-30T21:43:38
 tags: ["BookNotes", "Comics"]
-path: books-reading-list-in-2024
+slug: books-reading-list-in-2024
 author: 'fushenyang'
 ---
 

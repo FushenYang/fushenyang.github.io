@@ -3,7 +3,7 @@ title: 《编写可靠的JavaScript代码》读书笔记
 description: ''
 pubDate: 2023-05-10T07:44:47
 tags: ["BookNotes", "FrontendDevelopment"]
-path: reading-js-book
+slug: reading-js-book
 author: 'fushenyang'
 ---
 

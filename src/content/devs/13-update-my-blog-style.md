@@ -3,7 +3,7 @@ title: 更新我的博客排版
 pubDate: 2025-01-06T15:23:36
 tags:
   - "blog"
-path: "update-my-blog-style"
+slug: "update-my-blog-style"
 author: Fushen YANG
 ---
 

@@ -4,7 +4,7 @@ title: nginx的sub_filter调试笔记
 description: ''
 pubDate: 2024-04-20T21:54:28
 tags: ["Programming","Operations"]
-path: Fixing-Flaws-with-Nginx-sub-filter
+slug: Fixing-Flaws-with-Nginx-sub-filter
 author: 'Fushen YANG'
 
 ---

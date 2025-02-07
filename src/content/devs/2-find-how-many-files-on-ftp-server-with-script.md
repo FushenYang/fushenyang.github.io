@@ -3,7 +3,7 @@ title:  FTP文件扫描脚本
 description: ''
 pubDate: 2023-06-05T15:03:57
 tags: ["DevelopmentNotes"]
-path: find-how-many-files-on-ftp-server-with-script
+slug: find-how-many-files-on-ftp-server-with-script
 author: 'Fushen YANG'
 ---
 
@@ -50,7 +50,7 @@ OUTPUT="./output/now.txt"
 #the function
 function getFiles() {
     local path="$1"
-    if [[ ${path: -1} != "/" ]]; then
+    if [[ ${slug: -1} != "/" ]]; then
         path="${path}/"
     fi
     local scriptpath=$(echo "$path" | sed 's/ /\\ /g' | sed 's/&/\\&/g')

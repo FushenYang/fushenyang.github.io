@@ -3,7 +3,7 @@ title: 大连旅行记
 description: ''
 pubDate: 2023-09-30T16:48:35
 tags: ["Life","Travel"]
-path: travel-of-dalian
+slug: travel-of-dalian
 author: 'Fushen YANG'
 ---
 去了大连。
