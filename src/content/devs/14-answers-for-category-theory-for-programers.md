@@ -79,3 +79,121 @@ fn main() {
 >6.一个有向图，在什么情况下是一个范畴？
 
 任意两个对象都两两联通的情况应该是一个范畴了，当然，每个节点还有个环指向自己。
+
+### 类型与函数
+
+>1.用你最喜欢的语言，定义一个高阶函数（或函数对象）memoize。这个函数接受一个纯函数f，返回一个行为与f近乎相同的函数g。但是g只是第一次被调用时与f的功能相同，然后它在内部将结果存储了起来，后续再用同样的参数调用它，它只返回自己存储的那个结果。你可以通过观察f与g的运行效率来区分它们。例如，让f是一个需要耗费挺长时间才能完成计算的函数，这样，当第一次调用g的时候，它会运行的很慢，但是用同样的参数对g再次调用，则可以立即得到结果。
+
+```Rust
+use std::hash::Hash;
+use std::collections::HashMap;
+use std::rc::Rc;
+use std::cell::RefCell;
+fn memoize<F, A, R>(f: F) -> impl Fn(A) -> R
+where
+    F: Fn(A) -> R,
+    A: Eq + Hash + Clone,
+    R: Clone,
+{
+    let cache: Rc<RefCell<HashMap<A, R>>> = Rc::new(RefCell::new(HashMap::new()));
+    move |arg: A| {
+        let mut cache = cache.borrow_mut();
+        if let Some(result) = cache.get(&arg) {
+            return result.clone();
+        }
+        let result = f(arg.clone());
+        cache.insert(arg, result.clone());
+        result
+    }
+}
+fn slow_function(x: i32) -> i32 {
+    // 模拟一个耗时的计算
+    std::thread::sleep(std::time::Duration::from_secs(2));
+    x * x
+}
+fn main() {
+  let memoized_slow_function = memoize(slow_function);
+    // 第一次调用，应该会比较慢
+    println!("Result: {}", memoized_slow_function(4)); // 计算并缓存结果
+    // 第二次调用相同的参数，应该会很快
+    println!("Result: {}", memoized_slow_function(4)); // 直接返回缓存结果
+    // 不同的参数，应该会比较慢
+    println!("Result: {}", memoized_slow_function(5)); // 计算并缓存结果
+}
+```
+
+>2.标准库中用于生成随机数的函数，能够被memoize么？
+
+不能，没有参数。
+
+```Rust
+    let mut rng = rand::rng();
+    use rand::Rng;
+    let n = rng.random::<u32>();
+    println!("n = {}", n);
+```
+
+>3.大多数随机数生成器都能够用一个种子进行初始化。请实现一个能够接受种子的函数，这个函数可将种子转交给随机数生成器，然后返回所得结果。这个函数能被memoize么？
+
+可以。
+
+``` Rust
+    fn generate_random_number(seed:[u8;32]) -> u32 {
+        use rand::SeedableRng;
+        use rand::rngs::StdRng;
+        let mut rng = StdRng::from_seed(seed);
+        rng.random::<u32>()
+    }
+    println!("n:u32 with seed [0;32] = {}", generate_random_number([0;32]));
+    let memoized_generate_random_number = memoize(generate_random_number);
+    println!("memoized_generate_random_number n:u32 with seed [0;32] = {}", memoized_generate_random_number([0;32]));
+```
+
+>4.下面的 C++ 函数，哪一个是纯的？试着去 memoize 它们，然后多次调用后看看会发生什么：能被 memoize 还是不能。
+
+```C++
+(1) 文中的阶乘函数。
+(2) std::getchar()
+(3) bool f() {
+    std::cout << "Hello!" << std::endl;
+    return true;
+    }
+(4) int f(int x){
+    static int y = 0;
+    y += x;
+    return y;
+    }
+```
+
+只有(1)是纯函数，其他的都存在副作用，无法被缓存。
+
+>5.从 Bool 到 Bool 的函数有多少中？你可以将它们都实现出来么？
+
+一共有4种。
+
+```Rust
+fn always_true(x: bool) -> bool {true}
+fn always_false(x: bool) -> bool {false}
+fn not_function(x: bool) -> bool {!x}
+fn identity_function(x: bool) -> bool {x}
+```
+
+这里有个动手才能发现两个微妙的事实：
+
+1. identity_function和identity函数应该是等价的；
+2. 虽然函数确实是只有四种(2^2)，但是，函数的调用却存在8种情况，如下：
+
+- always_true(true): true
+- always_true(false): true
+- always_false(true): false
+- always_false(false): false
+- not_function(true): false
+- not_function(false): true
+- identity(true): true
+- identity(false): false
+
+>6.将Void，()（unit）以及Bool作为对象，将与这些类型相关的所有函数作为箭头，你能画出一个范畴么？用函数名来标注箭头。
+
+这个问题初步看非常困扰我，但是我感觉又非常重要。absurd函数是无法调用的，但是这个函数不存在吗？这个态射本身应该是存在的吧。结合对于集合的理解，Void对应的应该是空集，如果没有空集出发的态射显然是不合理的，因此，应该是考虑他们之间的态射。我能想到的结果如下：
+
+![感觉不太对，但是至少先手写一下～](14/answer-2.6.png)
