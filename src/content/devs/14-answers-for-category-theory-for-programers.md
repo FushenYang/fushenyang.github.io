@@ -32,6 +32,15 @@ description: Explore exercises and resources from 'Category Theory for Programme
 
 感谢[garfileo](https://segmentfault.com/u/garfileo)的翻译，至少第一部分可以有非常精良的翻译，我把链接放在这里，作为一个目录索引方便学习查阅。
 
+另外，我发现一个很好的思路，虽然概念很难很艰涩，但是只要不停的学习总能一点点的加深理解。学习中间会遇到一种困难，明明资料就在那里，并且作者以为他已经讲明白了，但是就是没有看懂，也很难看懂（比如，我在做第四章习题的时候就碰到了理解困难），这时怎么办呢？一个好办法是多看各种资料！每个人的切入点是不一样的，描述方式也不一样，这样总会在某个上下文中了解某个细节，这些细节的拼接就能慢慢还原原理的全貌了。从开阔的视野看，我了解haskell这个语言本身是不是就提供了一个让我重新审视“数学”，再次喜欢“数学”的视角呢？那我写下的这篇文章是不是也可能为别人提供一个“视角”？这样考虑，我是否不用太纠结“对错”？更加一般的，“兼听则明”是否就是学习行为的一般性呢？
+
+感悟完，这里记录一些有用的资料，还是得慢慢看、慢慢学。首先是《同构》这本书可以再看一遍，或者至少在这里记录一下，还有没有看完的[数理逻辑书](/mathematical-logic-reading-notes/)，完成笔记。另外就是一些公开的资料：
+
+- 知乎的内容非常接地气，伴随不同视角，描述角度众多->[怎么理解“一个单子（Monad）说白了不过就是自函子范畴上的一个幺半群而已”?](https://www.zhihu.com/question/282666729)
+- 我学习kaskell就是读完了这本，长度刚刚好，具体的语言给我提供了理解函数编程和范畴论的路径->[haskell趣学指南](https://learnyouahaskell.mno2.org)
+- 从js角度学习函数式编程，从事后来说这是个“伪捷径”，这个不适合“入门”，直接学习haskell看似麻烦其实是捷径，但是，如果深入理解之后再看这个，非常适合作为应用的例子看，嗯，这个不长->[mostly-adequate-guide-chinese](https://github.com/llh911001/mostly-adequate-guide-chinese)
+- 一个完整的单子实现，英文的，但是例子非常详细->[The State monad:A thorough guide to fp-ts's State monad.](https://paulgray.net/the-state-monad/)
+
 ---
 
 ## 课后挑战部分
