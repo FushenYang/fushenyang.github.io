@@ -36,6 +36,8 @@ author: 'fushenyang'
 
 这是我发现，程序的运行正确是可以形式确定的，计算机可以帮助我。那么，我是不是有了一个学习Lean的动机，如果我能用Lean证明这些定理，这样是不是有了一个让我可以踏实进步的工具。
 
+![是的～我证明了加法是幺半群～～欢呼🎉](book-2/add_is_monoid.png)
+
 ## 一些参考资料
 
 - [Lean4定理证明](https://subfish-zhou.github.io/theorem_proving_in_lean4_zh_CN/title_page.html)让我心心念非常感兴趣的编程语言。
