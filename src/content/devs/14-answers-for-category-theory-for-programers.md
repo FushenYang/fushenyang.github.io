@@ -40,7 +40,8 @@ description: Explore exercises and resources from 'Category Theory for Programme
 - 我学习kaskell就是读完了这本，长度刚刚好，具体的语言给我提供了理解函数编程和范畴论的路径->[haskell趣学指南](https://learnyouahaskell.mno2.org)
 - 从js角度学习函数式编程，从事后来说这是个“伪捷径”，这个不适合“入门”，直接学习haskell看似麻烦其实是捷径，但是，如果深入理解之后再看这个，非常适合作为应用的例子看，嗯，这个不长->[mostly-adequate-guide-chinese](https://github.com/llh911001/mostly-adequate-guide-chinese)
 - 一个完整的单子实现，英文的，但是例子非常详细->[The State monad:A thorough guide to fp-ts's State monad.](https://paulgray.net/the-state-monad/)
-- 这是一个刚刚搞懂的人提供的视角[详解函数式编程之 Monad](https://netcan.github.io/2020/09/30/详解函数式编程之Monad/)
+- 这是一个刚刚搞懂的人提供的视角->[详解函数式编程之 Monad](https://netcan.github.io/2020/09/30/详解函数式编程之Monad/)
+- wiki百科应该是比较高质量的解释了->[单子 (函数式编程)](https://zh.wikipedia.org/wiki/单子_(函数式编程))
 
 ---
 
