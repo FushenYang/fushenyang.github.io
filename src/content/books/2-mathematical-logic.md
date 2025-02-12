@@ -38,6 +38,8 @@ author: 'fushenyang'
 
 ![是的～我证明了加法是幺半群～～欢呼🎉](book-2/add_is_monoid.png)
 
+虽然最后还有很多语法没有接触（不能追求完美了，看到了FLT就很棒了），但是证明的过程的直观感受颇丰，induction(归纳法)是真的强，这个强也让我意识到了为什么0、identity那么重要，因为需要有一个开始，这个重要性来自于归纳法本身。另外，不等号本质不存在，只是语法糖，是a=b->False的符号表示，这个事实也是让我非常受到震撼！非常有意思的经历。
+
 ## 一些参考资料
 
 - [Lean4定理证明](https://subfish-zhou.github.io/theorem_proving_in_lean4_zh_CN/title_page.html)让我心心念非常感兴趣的编程语言。
