@@ -32,6 +32,17 @@ description: Explore exercises and resources from 'Category Theory for Programme
 
 感谢[garfileo](https://segmentfault.com/u/garfileo)的翻译，至少第一部分可以有非常精良的翻译，我把链接放在这里，作为一个目录索引方便学习查阅。
 
+下半部分感谢[Winerly](https://segmentfault.com/u/winerly)提供的翻译，目录如下：
+
+- [<译> 声明式编程](https://segmentfault.com/a/1190000017845092)
+- [<译>极限与余极限](https://segmentfault.com/a/1190000017897790)
+- [<译>自由幺半群](https://segmentfault.com/a/1190000017957156)
+- [<译>可表函子](https://segmentfault.com/a/1190000017971731)
+- [<译>米田引理](https://segmentfault.com/a/1190000018136661)
+- [<译>米田嵌入](https://segmentfault.com/a/1190000018175669)
+- [<译>有关态射的一切](https://segmentfault.com/a/1190000018331788)
+- [<译>伴随](https://segmentfault.com/a/1190000018435922)
+
 另外，我发现一个很好的思路，虽然概念很难很艰涩，但是只要不停的学习总能一点点的加深理解。学习中间会遇到一种困难，明明资料就在那里，并且作者以为他已经讲明白了，但是就是没有看懂，也很难看懂（比如，我在做第四章习题的时候就碰到了理解困难），这时怎么办呢？一个好办法是多看各种资料！每个人的切入点是不一样的，描述方式也不一样，这样总会在某个上下文中了解某个细节，这些细节的拼接就能慢慢还原原理的全貌了。从开阔的视野看，我了解haskell这个语言本身是不是就提供了一个让我重新审视“数学”，再次喜欢“数学”的视角呢？那我写下的这篇文章是不是也可能为别人提供一个“视角”？这样考虑，我是否不用太纠结“对错”？更加一般的，“兼听则明”是否就是学习行为的一般性呢？
 
 感悟完，这里记录一些有用的资料，还是得慢慢看、慢慢学。首先是《同构》这本书可以再看一遍，或者至少在这里记录一下，还有没有看完的[数理逻辑书](/mathematical-logic-reading-notes/)，完成笔记。另外就是一些公开的资料：
