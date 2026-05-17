@@ -6,7 +6,12 @@ export interface Props {
 const { date } = Astro.props;
 
 // 格式化日期为“年-月-日”格式
-const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+//const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+const formattedDate = date.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+}).replace(/\//g, '-'); // 将默认的斜杠 2025/02/08 替换为横杠 2025-02-08
 ---
 
 <span>{formattedDate}</span>
