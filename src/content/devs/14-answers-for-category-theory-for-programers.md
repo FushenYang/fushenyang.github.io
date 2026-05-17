@@ -16,30 +16,36 @@ description: Explore exercises and resources from 'Category Theory for Programme
 
 ## 相关资源
 
-首先是[原始博客](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)，这个是作者原文，然后就是我参考学习的中文翻译汇总：
+首先是[原始博客](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)，这个是作者原文，
 
-- [<译> 写给程序猿的范畴论 · 序](https://segmentfault.com/a/1190000003882331)
-- [<译> 范畴：复合的本质](https://segmentfault.com/a/1190000003883257)
-- [<译> 类型与函数](https://segmentfault.com/a/1190000003888544)
-- [<译> 范畴，可大可小](https://segmentfault.com/a/1190000003894116)
-- [<译> Kleisli 范畴](https://segmentfault.com/a/1190000003898795)
-- [<译> 积与余积](https://segmentfault.com/a/1190000003913079)
-- [<译> 简单的代数数据类型](https://segmentfault.com/a/1190000003943687)
-- [<译> 函子](https://segmentfault.com/a/1190000003954370)
-- [<译> 函子性](https://segmentfault.com/a/1190000003993662)
-- [<译> 函数类型](https://segmentfault.com/a/1190000004631638)
-- [<译> 自然变换](https://segmentfault.com/a/1190000012381561)
+然后为了方便我学习，我汇总了一下在晚上找到的翻译，后续有些章节目前没有找到翻译，我准备再等等看，或许自己翻译也说不定呢：
+
+首先是第一部分，一共10篇（不含序）。
+
+- [0.<译> 写给程序猿的范畴论 · 序](https://segmentfault.com/a/1190000003882331)
+- [1.<译> 范畴：复合的本质](https://segmentfault.com/a/1190000003883257)
+- [2.<译> 类型与函数](https://segmentfault.com/a/1190000003888544)
+- [3.<译> 范畴，可大可小](https://segmentfault.com/a/1190000003894116)
+- [4.<译> Kleisli 范畴](https://segmentfault.com/a/1190000003898795)
+- [5.<译> 积与余积](https://segmentfault.com/a/1190000003913079)
+- [6.<译> 简单的代数数据类型](https://segmentfault.com/a/1190000003943687)
+- [7.<译> 函子](https://segmentfault.com/a/1190000003954370)
+- [8.<译> 函子性](https://segmentfault.com/a/1190000003993662)
+- [9.<译> 函数类型](https://segmentfault.com/a/1190000004631638)
+- [10.<译> 自然变换](https://segmentfault.com/a/1190000012381561)
 
 感谢[garfileo](https://segmentfault.com/u/garfileo)的翻译，至少第一部分可以有非常精良的翻译，我把链接放在这里，作为一个目录索引方便学习查阅。
 
-下半部分感谢[Winerly](https://segmentfault.com/u/winerly)提供的翻译，目录如下：
+第二部分[Winerly](https://segmentfault.com/u/winerly)提供的翻译，目录如下：
 
-- [<译> 声明式编程](https://segmentfault.com/a/1190000017845092)
-- [<译>极限与余极限](https://segmentfault.com/a/1190000017897790)
-- [<译>自由幺半群](https://segmentfault.com/a/1190000017957156)
-- [<译>可表函子](https://segmentfault.com/a/1190000017971731)
-- [<译>米田引理](https://segmentfault.com/a/1190000018136661)
-- [<译>米田嵌入](https://segmentfault.com/a/1190000018175669)
+- [1.<译> 声明式编程](https://segmentfault.com/a/1190000017845092)
+- [2.<译>极限与余极限](https://segmentfault.com/a/1190000017897790)
+- [3.<译>自由幺半群](https://segmentfault.com/a/1190000017957156)
+- [4.<译>可表函子](https://segmentfault.com/a/1190000017971731)
+- [5.<译>米田引理](https://segmentfault.com/a/1190000018136661)
+- [6.<译>米田嵌入](https://segmentfault.com/a/1190000018175669)
+
+第三部分，目前没有完整的翻译：
 - [<译>有关态射的一切](https://segmentfault.com/a/1190000018331788)
 - [<译>伴随](https://segmentfault.com/a/1190000018435922)
 
