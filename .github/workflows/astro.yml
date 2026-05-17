@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progres: false
 
 jobs:
   build:
@@ -22,33 +22,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "pnpm"
+          # 注意：这里故意不传 cache: "pnpm"，切断 pnpm 插件的无形控制
 
-      # 暴力清除本地可能冲突的旧锁文件，直接全新安装
-      - name: Clean and Install
+      # 绕过 pnpm，直接用 npm 暴力安装，npm 默认对原生脚本完全放行
+      - name: Clean and Install with NPM
         run: |
-          rm -f pnpm-lock.yaml
-          pnpm config set ignore-scripts false
-          pnpm install
-        env:
-          PNPM_CONFIG_IGNORE_SCRIPTS: "false"
-          NPM_CONFIG_IGNORE_SCRIPTS: "false"
+          npm install --legacy-peer-deps
+        working-directory: "."
 
-      # 手动写死打包，不再让 GitHub 插件注入环境变量。
-      # 注意：如果你的 GitHub Pages 是子路径（比如 username.github.io/repo/），请把 --base 改为 "/repo/"
       - name: Build with Astro
-        run: pnpm astro build --site "https://${{ github.repository_owner }}.github.io" --base "/${{ github.event.repository.name }}"
+        run: |
+          npx astro build \
+            --site "https://${{ github.repository_owner }}.github.io" \
+            --base "/${{ github.event.repository.name }}"
+        working-directory: "."
 
-      # 直接上传 dist 目录，不使用任何带有检测功能的 Setup 插件
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
