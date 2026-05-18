@@ -1,11 +1,10 @@
 ---
-const path = new URL(Astro.request.url).pathname
-const key = path.split('/')[1]
+const [, key = ""] = Astro.url.pathname.split('/')
 ---
 
 
 
-<nav class="bg-white flex">
+<nav class="flex">
   <a class:list={[{ "bg-slate-200": key=="" }]} href="/">文章</a>
   <a class:list={[{ "bg-slate-200": key=="list" }]} href="/list">目录</a>
   <a class:list={[{ "bg-slate-200": key=="tags" }]} href="/tags">索引</a>
