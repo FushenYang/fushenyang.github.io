@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Banner from "../components/Banner.astro";
 import Navigation from "../components/Navigation.astro";
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <main class="w-full mx-auto md:mt-5 md:w-3/4 md:container lg:w-1/2">
+    <main class="w-full mx-auto md:mt-5 md:w-3/4 md:container">
       <div class="border">
         <Banner />
         <Navigation />

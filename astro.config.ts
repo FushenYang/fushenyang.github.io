@@ -2,13 +2,15 @@ import { defineConfig } from "astro/config";
 
 //import remarkEleventyImage from "astro-remark-eleventy-image";
 import preact from "@astrojs/preact";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
+//import tailwind from "@astrojs/tailwind";
 //import remarkFigureCaption from '@microflash/remark-figure-caption';
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://fushen.yang.cathome.eu.org",
-  integrations: [preact(), tailwind()],
+  integrations: [preact() /*, tailwind() */],
+
   markdown: {
     shikiConfig: {
       // 选择 Shiki 内置的主题（或添加你自己的主题）
@@ -30,5 +32,9 @@ export default defineConfig({
       // 查找常用转换器：https://shiki.style/packages/transformers
       transformers: [],
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
