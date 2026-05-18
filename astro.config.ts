@@ -5,6 +5,7 @@ import preact from "@astrojs/preact";
 import tailwindcss from "@tailwindcss/vite";
 //import tailwind from "@astrojs/tailwind";
 //import remarkFigureCaption from '@microflash/remark-figure-caption';
+import { remarkExcerpt } from "./src/lib/remark-excerpt";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
   integrations: [preact() /*, tailwind() */],
 
   markdown: {
+    remarkPlugins: [remarkExcerpt],
     shikiConfig: {
       // 选择 Shiki 内置的主题（或添加你自己的主题）
       // https://shiki.style/themes
