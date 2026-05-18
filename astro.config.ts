@@ -7,7 +7,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://oldyang.site",
+  site: "https://fushen.yang.cathome.eu.org",
   integrations: [preact(), tailwind()],
   markdown: {
     shikiConfig: {
