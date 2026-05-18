@@ -1,95 +1,76 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* ==========================================
+   1. 配置全新 v4 主题（把你的硬编码颜色变成系统变量）
+   ========================================== */
+@theme {
+  --color-brand: #ff9776;
+  --color-bg-light: #f1f5f9;
+  --color-bg-dark: #0d0950;
+
+  --font-sans: sans-serif;
+}
+
+/* ==========================================
+   2. 基础标签样式（Base Styles）
+   ========================================== */
 html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
-}
+  @apply bg-bg-light font-sans text-slate-900 antialiased;
 
-html.dark {
-    background-color: #0d0950;
-    color: #fff;
-}
-
-.dark .nav-links a {
-    color: #fff;
+  /* 支持标准的暗黑模式，无需手动写 html.dark */
+  &.dark {
+    @apply bg-bg-dark text-white;
+  }
 }
 
 body {
-    margin: 0 auto;
-    width: 100%;
-    padding: 1rem;
-    line-height: 1.5;
-}
-
-* {
-    box-sizing: border-box;
+  @apply mx-auto w-full p-4 leading-normal;
 }
 
 h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
+  @apply my-4 text-4xl; /* 2.5rem 对应 text-4xl */
 }
 
-/* 导航样式 */
+/* 全局盒模型，Tailwind 默认已经内置了，这里无需重复写 * { box-sizing: border-box; } */
 
-.nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
-    display: none;
-    margin: 0;
+
+/* ==========================================
+   3. 组件样式抽象（Utilities）
+   ========================================== */
+
+/* 导航栏容器 */
+@utility nav-links {
+  @apply hidden m-0 w-full top-20 left-12 bg-brand;
+
+  /* 用 sm: 替代原生的 @media screen and (min-width: 636px) */
+  @apply sm:block sm:static sm:w-auto sm:bg-none sm:ml-20;
 }
 
-.nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
+/* 导航链接 */
+@utility nav-link {
+  @apply block text-center py-2.5 no-underline text-lg font-bold uppercase transition-colors;
+
+  /* 响应式样式与暗黑模式自然融合 */
+  @apply sm:inline-block sm:py-3 sm:px-5;
+  @apply dark:text-white;
+
+  /* 状态变体 */
+  &:hover, &:focus {
+    @apply bg-brand;
+  }
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
-    background-color: #ff9776;
+/* 汉堡包按钮 */
+@utility hamburger {
+  @apply pr-5 cursor-pointer sm:hidden; /* 默认显示，大屏隐藏 */
 }
 
-.expanded {
-    display: unset;
+@utility hamburger-line {
+  @apply block w-10 h-1.25 mb-2.5 bg-brand;
 }
 
-
-.hamburger {
-    padding-right: 20px;
-    cursor: pointer;
-}
-
-.hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
-}
-
-@media screen and (min-width: 636px) {
-    .nav-links {
-        margin-left: 5em;
-        display: block;
-        position: static;
-        width: auto;
-        background: none;
-    }
-
-    .nav-links a {
-        display: inline-block;
-        padding: 15px 20px;
-    }
-
-    .hamburger {
-        display: none;
-    }
+/* 控制菜单展开 */
+@utility expanded {
+  @apply block!; /* v4 规范写法，替代 display: unset */
 }
