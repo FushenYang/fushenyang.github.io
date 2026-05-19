@@ -20,6 +20,18 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script>
+      (function () {
+        const html = document.documentElement;
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const theme =
+          stored === "dark" || (!stored && prefersDark) ? "dark" : "light";
+        html.classList.toggle("dark", theme === "dark");
+      })();
+    </script>
   </head>
   <body>
     <main class="w-full mx-auto md:mt-5 md:w-3/4 md:container">

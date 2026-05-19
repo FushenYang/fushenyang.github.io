@@ -1,20 +1,19 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* ==========================================
-   1. 配置全新 v4 主题（把你的硬编码颜色变成系统变量）
-   ========================================== */
+
 @theme {
   --color-brand: #ff9776;
   --color-bg-light: #f1f5f9;
+  --color-bg: #f1f5f9;
+  --color-text: #0f172a;
+  --color-bg-dark: #0b1120;
+  --color-text-dark: #f8fafc;
   --color-bg-dark: #0d0950;
 
   --font-sans: sans-serif;
 }
 
-/* ==========================================
-   2. 基础标签样式（Base Styles）
-   ========================================== */
 html {
   @apply bg-bg-light font-sans text-slate-900 antialiased;
 
