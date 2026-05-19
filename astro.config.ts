@@ -3,6 +3,8 @@ import { defineConfig } from "astro/config";
 //import remarkEleventyImage from "astro-remark-eleventy-image";
 import preact from "@astrojs/preact";
 import tailwindcss from "@tailwindcss/vite";
+
+
 //import tailwind from "@astrojs/tailwind";
 //import remarkFigureCaption from '@microflash/remark-figure-caption';
 import { remarkExcerpt } from "./src/lib/remark-excerpt";

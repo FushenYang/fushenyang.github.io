@@ -5,7 +5,7 @@ tags:
   - fp
   - haskell
   - Category Theory
-slug: Category-Theory-for-Programers-Homework-Answers-cn
+slug: Category-Theory-for-Programers-Notes
 author: Fushen YANG
 description: Explore exercises and resources from 'Category Theory for Programmers' to deepen your understanding of programming concepts and Monad.
 ---
@@ -46,6 +46,7 @@ description: Explore exercises and resources from 'Category Theory for Programme
 - [6.<译>米田嵌入](https://segmentfault.com/a/1190000018175669)
 
 第三部分，目前没有完整的翻译：
+
 - [<译>有关态射的一切](https://segmentfault.com/a/1190000018331788)
 - [<译>伴随](https://segmentfault.com/a/1190000018435922)
 
@@ -70,13 +71,13 @@ description: Explore exercises and resources from 'Category Theory for Programme
 
 >1.用你最喜欢的语言（如果你最喜欢的是 Haskell，那么用你第二喜欢的语言）尽力实现一个恒等函数。
 
-```Rust
+```rust
 fn id<T>(x:T) -> T {x}
 ```
 
 >2.用你最喜欢的语言实现函数的复合，它接受两个函数作为参数值，返回一个它们的复合函数。
 
-```Rust
+```rust
 fn compose<A,B,F,G,T>(f: F, g: G) -> impl Fn(A) -> T
 where
     F: Fn(B) -> T,
@@ -88,7 +89,7 @@ where
 
 >3.写一个程序，测试你写的可以复合函数的函数是否能支持恒等函数。
 
-```Rust
+```rust
 fn main() {
     fn add_one(x: i32) -> i32 {x + 1}
     let f = compose(add_one, id);
@@ -112,7 +113,7 @@ fn main() {
 
 >1.用你最喜欢的语言，定义一个高阶函数（或函数对象）memoize。这个函数接受一个纯函数f，返回一个行为与f近乎相同的函数g。但是g只是第一次被调用时与f的功能相同，然后它在内部将结果存储了起来，后续再用同样的参数调用它，它只返回自己存储的那个结果。你可以通过观察f与g的运行效率来区分它们。例如，让f是一个需要耗费挺长时间才能完成计算的函数，这样，当第一次调用g的时候，它会运行的很慢，但是用同样的参数对g再次调用，则可以立即得到结果。
 
-```Rust
+```rust
 use std::hash::Hash;
 use std::collections::HashMap;
 use std::rc::Rc;
@@ -154,7 +155,7 @@ fn main() {
 
 不能，没有参数。
 
-```Rust
+```rust
     let mut rng = rand::rng();
     use rand::Rng;
     let n = rng.random::<u32>();
@@ -165,7 +166,7 @@ fn main() {
 
 可以。
 
-``` Rust
+``` rust
     fn generate_random_number(seed:[u8;32]) -> u32 {
         use rand::SeedableRng;
         use rand::rngs::StdRng;
@@ -179,7 +180,7 @@ fn main() {
 
 >4.下面的 C++ 函数，哪一个是纯的？试着去 memoize 它们，然后多次调用后看看会发生什么：能被 memoize 还是不能。
 
-```C++
+```c++
 (1) 文中的阶乘函数。
 (2) std::getchar()
 (3) bool f() {
@@ -199,7 +200,7 @@ fn main() {
 
 一共有4种。
 
-```Rust
+```rust
 fn always_true(x: bool) -> bool {true}
 fn always_false(x: bool) -> bool {false}
 fn not_function(x: bool) -> bool {!x}

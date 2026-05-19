@@ -3,7 +3,7 @@ title: 部署一个支持小组开展工作的jupyter环境
 description: ''
 pubDate: 2023-11-10T10:19:16
 tags: ["Tutorials"]
-slug: jupyterhub-for-team-work
+slug: jupyterhub-for-team-work-notes
 author: 'Fushen YANG'
 ---
 
@@ -94,7 +94,7 @@ python3 -m pip install jupyterhub jupyter notebook #这个可以顺利安装note
 
 经过上面的操作，jupyterhub已经装好了，可以尝试启动jupyterhub了。
 
-``` bash
+```bash
 mkdir ~/jupyterhub #创建用来放置jupyterhub的目录
 cd ~/jupyterhub/
 jupyterhub --generate-config #会生成配置文件模版
@@ -182,7 +182,9 @@ chmod 755 ~/home/peter/
 
 ![经历漫长的配置，“一般”用户可以关注开发了](5-jupyterhub-for-team-work/users-run-command-under.png)
 
-虽然配置工作很辛苦，不过至少环境可以统一了，如果用户多一点（也不需要特别多，节约的精力依然可观），使用conda在对应虚拟环境下安装的包都可以让所有用户共享。对于某些的特定的共享文件，可以放在共享系统库目录中共享,`python -c "import sys;print(sys.path)"`命令输出的地址都可以放置共享文件。另外对于，需要使用ctypes.cdll.LoadLibrary函数加载的模块，系统会寻找LD_LIBRARY_PATH设置的目录，对于systemd，设置两个节点就可以了。
+虽然配置工作很辛苦，不过至少环境可以统一了，如果用户多一点（也不需要特别多，节约的精力依然可观），使用conda在对应虚拟环境下安装的包都可以让所有用户共享。对于某些的特定的共享文件，可以放在共享系统库目录中共享,
+`python -c "import sys;print(sys.path)"`
+命令输出的地址都可以放置共享文件。另外对于，需要使用ctypes.cdll.LoadLibrary函数加载的模块，系统会寻找LD_LIBRARY_PATH设置的目录，对于systemd，设置两个节点就可以了。
 
 ``` bash
 #这是配置例子，实际测试过并没有成功
